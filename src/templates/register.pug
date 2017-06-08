@@ -1,0 +1,20 @@
+extends layout.pug
+
+block content
+	.container
+		h3 #{errors}
+	.container
+		form(method='post' action='/register')
+			.form-group
+				label(for='username') Username: 
+				input(type='username' class='form-control' name='username')
+			.form-group
+				label(for='email') Email: 
+				input(type='email' class='form-control' name='email')
+			//- .form-group
+			//- 	label(for='password') Password: 
+			//- 	input(type='password' class='form-control' name='password')
+			//- .form-group
+			//- 	label(for='confirmPwd') Confirm password:
+			//- 	input(type='password' class='form-control' name='confirmPwd')
+			button(type='submit' class='btn btn-primary btn-lg btn-block' id='submitBtn') Submit

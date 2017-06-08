@@ -1,0 +1,26 @@
+.jumbotron {
+	background-color: lightblue;
+}
+
+.navbar-header {
+	letter-spacing: 20px;
+	color: black;
+}
+
+#ulContMain {
+	
+}
+
+#ulContSub {
+	font-size: 20px;
+}
+
+#mainNav {
+	border: none;
+	margin: 0px;
+
+}
+
+#ulId {
+	letter-spacing: 5px;
+}
