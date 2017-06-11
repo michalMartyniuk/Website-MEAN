@@ -1,0 +1,28 @@
+extends layout.pug
+
+block content
+    .task.container.col-md-8.col-md-offset-2(ng-app='app', ng-controller='mainCtrl')
+      h1.text-center To-do list
+      #errorMsg.alert(ng-class='{ "alert-danger": switches.error == true, "alert-success": switches.success == true, "alert-info": switches.empty == true }', ng-show='switches.error || switches.success || switches.empty')
+        | {{ msg }}
+      div
+        #addDiv.form-group.col-md-8
+          label(for='task') New task
+          input#taskInput.form-control(ng-model='title', type='text', name='task')
+        #addBtnDiv.col-md-4
+          button#addBtn.btn.btn-success.btn-lg.btn-block(ng-click='add()') Add
+        div(ng-repeat='task in tasks')
+          h2 {{ task.editS }}
+          .well.col-md-8.task-text(ng-show='!task.editS')
+            p {{ task.name }}
+          .well.col-md-8.task-text(ng-show='task.editS')
+            input#taskInput.form-control(ng-model='editModel', type='text')
+          .col-md-4.task-btn
+            button.btn.btn-lg.btn-danger.pull-right(ng-click='delete()') Delete
+            button.btn.btn-lg.btn-primary.pull-right(ng-click='edit()') Edit
+            button.btn.btn-lg.btn-success.pull-right(ng-click='done()') Done
+        .col-md-12.doneTasks
+          h2
+            strong Done tasks list
+          .col-md-12.well.task-text(ng-repeat='task in doneTasks')
+            | {{ task }}

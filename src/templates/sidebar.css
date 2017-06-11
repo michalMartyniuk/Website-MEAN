@@ -1,0 +1,99 @@
+#sidebarDiv {
+}
+#wrapper {
+}
+
+#sidebarUl {
+	top: 100px;
+}
+
+
+#sidebarUl li div {
+	padding: 10px;
+	margin: 1px;
+	position: relative;
+	color: white;
+	text-decoration: none;
+	font-size: 25px;
+	letter-spacing: 5px;
+	width: 100%;
+	height: 100%;
+	border-radius: inherit;
+	z-index: 0;
+	box-shadow: 0px 0px 20px red;
+}
+
+
+#sidebarUl li {
+	margin: 0px;
+	padding: 0px;
+	position: relative;	
+	border: none;
+	border-radius: 20px;
+}
+
+#sidebarUl li:hover {
+	animation: liAnim 0.5s forwards;
+}
+
+
+#sidebarUl li div:hover {
+	animation: divAnim 0.5s forwards;
+}
+
+.divClass {
+	background-color: black;
+}
+
+.divSwitch {
+	background-color: black;
+}
+
+.divSwitch2 {
+	animation: opacAnim 0.5s forwards;
+}
+
+@keyframes divAnim {
+	0% { 
+		width: 100%;
+		right: 0px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		bottom: 0px;
+		box-shadow: 0px 0px 20px red;
+	}
+
+	20% {
+		box-shadow: 100px 0px 200px blue;
+	}
+	
+	50% {
+		box-shadow: -100px 0px 200px red;
+	}
+
+	70% {
+		box-shadow: 100px 0px 200px blue;
+	}
+
+	100% {
+		width: 110%;
+		right: 17px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		bottom: 0px;
+		box-shadow: 0px 0px 50px red;
+		background-color: white;
+		color: black;
+	}
+}
+
+/*@keyframes divAnim {
+	0% { box-shadow: 0px 0px 0px red;}
+	100% { box-shadow: 0px 0px 400px red;}
+}
+*/
+@keyframes opacAnim {
+	0% { opacity: 1; }
+	100% { opacity: 1;}
+}
+

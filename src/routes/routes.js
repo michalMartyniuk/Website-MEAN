@@ -12,6 +12,11 @@ router.get('/home', function (req, res, next) {
 	next()
 })
 
+router.get('/todo', function (req, res, next) {
+	res.render('todo', { title: 'To-do list' })
+	next()
+})
+
 router.get('/validation', function (req, res, next) {
 	res.render('validation', { title: 'Form Validation', success: req.session.success, errors: req.session.errors})
 	req.session.errors = null
