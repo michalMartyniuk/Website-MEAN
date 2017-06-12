@@ -1,0 +1,13 @@
+extends layout.pug
+
+block content
+	.container
+		form(method='post' action='/login')
+			.form-group
+				label(for='username') Username: 
+				input(type='text' class='form-control' name='username')
+			.form-group
+				label(for='password') Password:
+				input(type='text' class='form-control' name='password')
+			button(type='submit' class='btn btn-primary btn-lg btn-block')
+				|Login

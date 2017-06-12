@@ -1,6 +1,8 @@
-var express = require('express')
-var router = express.Router()
-var User = require('../models/user')
+const express = require('express')
+const router = express.Router()
+const User = require('../models/user')
+const passport = require('passport')
+const jwt = require('jsonwebtoken')
 
 router.get('/', function (req, res, next) {
 	res.render('home', { title: 'Home' })
@@ -44,47 +46,96 @@ router.get('/blog', function (req, res, next) {
 })
 
 router.get('/profile', function (req, res, next) {
+	if(!req.session.user) {
+		return res.status(401).send("Error 401")
+	}
+
 	res.render('profile', { title: 'Profile' } )
+})
+
+
+router.get('/session', function (req, res, next) {
+	res.send(req.session)
+})
+
+router.get('/login', function (req, res, next) {
+	res.render('login', { title: 'Login' })
+})
+
+
+router.post('/login', function (req, res, next) {
+	var username = req.body.username
+	var password = req.body.password
+
+	User.findOne({ username: username, password: password }, function (err, user) {
+		if(err) {
+			return res.status(500).send()
+		}
+		if(!user) {
+			return res.status(404).send()
+		}
+
+		req.session.user = user
+		res.render('profile', {
+			title: 'Profile',
+			name: req.session.user.name,
+			username: req.session.user.username,
+			email: req.session.user.email
+		})
+	})
+})
+
+router.get('/logout', function (req, res, next) {
+	req.session.destroy()
+	res.render('home', { 
+		title: 'Home',
+		msg: 'You have been log out successfully'
+	})
 })
 
 router.get('/register', function (req, res, next) {
 	res.render('register', { title: 'Sign up' })
 })
 
-router.get('/session', function (req, res, next) {
-	res.send(req.session)
-})
-
 router.post('/register', function (req, res, next) {
-	
-	req.checkBody('name', 'Name is required').notEmpty()
-	req.checkBody('email', 'Email is required').notEmpty()
-	req.checkBody('email', 'Email is not valid').isEmail()
 
-	var errors = req.validationErrors()
+	var newUser = new User({
+		name: req.body.name,
+		email: req.body.email,
+		username: req.body.username,
+		password: req.body.password
+	})
 
-	if(errors) {
-		res.render('register', { errors: errors })
-	}
-	else {
-		res.send('All is good')
-		next()
-	}
 
-	// var newUser = new User()
+	newUser.save(function (err, savedUser) {
+		if(err) {
+			return res.status(500).send()
+		}
 
-	// newUser.username = req.body.username
-	// newUser.email = req.body.email
+		res.render('profile', { 
+			title: 'Profile',
+			username: savedUser.username,
+			email: savedUser.email,
+			name: savedUser.name
+		})
+	})
 
-	// newUser.save(function (err, data) {
-	// 	if(err){
-	// 		console.log(err)
-	// 		res.send(err)
+
+
+
+
+
+
+
+	// User.addUser(newUser, (err, user) => {
+	// 	if(err) {
+	// 		res.json({success: false, msg: "Failed to register user"})
 	// 	}
 	// 	else {
-	// 		res.render('profile', { username: data.username, email: data.email, title: 'Profile' })
+	// 		res.json({success: true, msg: "User registered"})
 	// 	}
 	// })
+	
 })
 
 
