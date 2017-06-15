@@ -1,11 +1,68 @@
 angular.module('app', [])
 
-.controller('mainCtrl', function ($scope) {
-	$scope.tasks = tasks
-	$scope.doneTasks = doneTasks
+.controller('mainCtrl', function ($scope, $http) {
+	$scope.tasks = []
+	$scope.doneTasks = []
 	$scope.title = ""
-	$scope.editModel = ""
 	$scope.switches = switches
+	$scope.taskName = ""
+	$scope.editVal = ""
+
+	$scope.getTasks = function() {
+		$http.get('/data').then(function (response) {
+			$scope.tasks = response.data.tasks.inProgress 
+			$scope.doneTasks = response.data.tasks.done
+		}, function (response) {
+			$scope.response = response.statusText
+		})
+	}
+
+	$scope.getTasks()
+
+	$scope.done = function() {
+		if($scope.doneTasks.includes(this.task.name)) {
+			$scope.switchChange('error')
+			$scope.msg = "This task already exists"
+		}
+		else {
+			$http.post('/doneTodo' + this.task.name)	
+			this.delete()
+			$scope.getTasks()
+			$scope.switchChange('success')
+			$scope.msg = "Your task has been deleted and added to your Done list"
+		}
+	}
+
+	$scope.add = function (){
+		if(!($scope.tasks.includes($scope.title)) && $scope.title !== ""){
+			$http.post('/addTodo' + $scope.title).then(function (response) {
+				$scope.getTasks()
+				$scope.switchChange('success')
+				$scope.msg = "Your task was added successfully"
+			}, function (response) {
+				$scope.switchChange('error')
+				$scope.msg = response.statusText
+			})
+		}
+
+		else if($scope.title == ""){
+			$scope.switchChange('empty')
+			$scope.msg = "Task field is empty. Please enter task to add."
+			
+		}
+		else if($scope.tasks.includes($scope.title)) {
+			$scope.switchChange('error')
+			$scope.msg = "This task already exists"
+			
+		}
+	}
+
+	$scope.delete = function () {
+		$http.delete('/delTodo' + this.task.name)
+		$scope.getTasks()
+		$scope.switchChange('success')
+		$scope.msg = "Your task has been deleted"
+	}
 
 	$scope.switchChange = function(state) {
 		for(var key in switches) {
@@ -20,48 +77,19 @@ angular.module('app', [])
 		}	
 	}
 
-	$scope.done = function() {
-		$scope.doneTasks.push(this.task.name)
-		this.delete()
-		$scope.switchChange('success')
-		$scope.msg = "Your task has been deleted and added to your Done list"
-	}
-
+	var task = ""
+	
 	$scope.edit = function() {
-		var index = $scope.tasks.indexOf(this.task)
-		if(!this.task.editS) {
-			this.task.editS = true
-		}
-		else {
-			$scope.tasks.splice(index, 1, {name: this.editModel, editS: false})
+		if (this.task.edit == true) {
+			$http.post('/editTodo' + task + '/' + this.task.name)
+			$scope.getTasks()
 			$scope.switchChange('success')
 			$scope.msg = "Edited task successfully"
 		}
-	}
 
-	$scope.delete = function () {
-		var index = $scope.tasks.indexOf(this.task)
-		$scope.tasks.splice(index, 1)
-		$scope.switchChange('success')
-		$scope.msg = "Task: " + this.task.name + " was deleted successfully"
-	}
-
-	$scope.add = function (){
-		if(!($scope.tasks.includes($scope.title)) && $scope.title !== ""){
-			$scope.switchChange('success')
-			$scope.tasks.push({name: $scope.title, editS: false})
-			$scope.msg = "Your task was added successfully"
-			
-		}
-		else if($scope.title == ""){
-			$scope.switchChange('empty')
-			$scope.msg = "Task field is empty. Please enter task to add."
-			
-		}
-		else if($scope.tasks.includes($scope.title)) {
-			$scope.switchChange('error')
-			$scope.msg = "This task already exists"
-			
+		else if (this.task.edit == false) {
+			this.task.edit = true
+			task = this.task.name
 		}
 	}
 })
@@ -73,12 +101,6 @@ var switches = {
 	done: false
 }
 
-var tasks = [
-	{ name: 'John', editS: false },
-	{ name: 'Lucas', editS: false }
-]
-
-var doneTasks = []
 
 
 

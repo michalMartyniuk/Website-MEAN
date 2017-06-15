@@ -21,13 +21,13 @@ app.use(session({
 app.use(function (req, res, next) {
 	if(req.session.user) {
 		res.locals.user = req.session.user
+		res.locals.userLogged = true
 	}
 	else {
-		res.locals.user = "You are not logged in"
+		res.locals.userLogged = false
 	}
 	next()
 })
-
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -45,6 +45,10 @@ app.use(cors())
 app.use(passport.initialize())
 app.use(passport.session())
 
+
+app.use(function (err, req, res, next) {
+	res.render('error', { title: 'Error', error: err.message })
+})
 
 
 app.listen(7000, function(){

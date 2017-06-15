@@ -15,6 +15,7 @@ router.get('/home', function (req, res, next) {
 })
 
 router.get('/todo', function (req, res, next) {
+
 	res.render('todo', { title: 'To-do list' })
 	next()
 })
@@ -47,7 +48,8 @@ router.get('/blog', function (req, res, next) {
 
 router.get('/profile', function (req, res, next) {
 	if(!req.session.user) {
-		return res.status(401).send("Error 401")
+		var err = new Error("Sorry! You need to be logged in to see this page")
+		return next(err)
 	}
 
 	res.render('profile', { title: 'Profile' } )
@@ -69,28 +71,21 @@ router.post('/login', function (req, res, next) {
 
 	User.findOne({ username: username, password: password }, function (err, user) {
 		if(err) {
-			return res.status(500).send()
+			return next(err)
 		}
 		if(!user) {
-			return res.status(404).send()
+			var err = new Error('User not found')
+			return next(err)
 		}
 
 		req.session.user = user
-		res.render('profile', {
-			title: 'Profile',
-			name: req.session.user.name,
-			username: req.session.user.username,
-			email: req.session.user.email
-		})
+		res.redirect('profile')
 	})
 })
 
 router.get('/logout', function (req, res, next) {
 	req.session.destroy()
-	res.render('home', { 
-		title: 'Home',
-		msg: 'You have been log out successfully'
-	})
+	res.redirect('home')
 })
 
 router.get('/register', function (req, res, next) {
@@ -107,36 +102,86 @@ router.post('/register', function (req, res, next) {
 	})
 
 
-	newUser.save(function (err, savedUser) {
+	newUser.save(function (err, user) {
 		if(err) {
-			return res.status(500).send()
+			return next(err)
 		}
 
-		res.render('profile', { 
-			title: 'Profile',
-			username: savedUser.username,
-			email: savedUser.email,
-			name: savedUser.name
-		})
-	})
-
-
-
-
-
-
-
-
-	// User.addUser(newUser, (err, user) => {
-	// 	if(err) {
-	// 		res.json({success: false, msg: "Failed to register user"})
-	// 	}
-	// 	else {
-	// 		res.json({success: true, msg: "User registered"})
-	// 	}
-	// })
-	
+		req.session.user = user
+		res.redirect('profile')
+	})	
 })
+
+
+router.get('/data', function (req, res, next) {
+	User.findOne({ username: req.session.user.username }, function (err, data) {
+		if(err) {
+			return next(err)
+		}
+		res.json(data)
+	})
+})
+
+
+router.post('/editTodo:task/:newTask', function (req, res, next) {
+	var user = req.session.user
+	var task = req.params.task
+	var newTask = req.params.newTask
+
+	User.update({username: user.username, 'tasks.inProgress': { name: task, edit: false } }, 
+		{$set: {'tasks.inProgress.$': { name: newTask, edit: false } } },
+		function (err, data) {
+			if(err) {
+				return next(err)
+			}
+			res.json(data)
+		})
+})
+
+router.post('/doneTodo:task', function (req, res, next) {
+	var user = req.session.user
+	var task = req.params.task
+	User.update({ username: user.username },
+		{ $push: { "tasks.done": task }},
+		function (err, data) {
+			if(err) {
+				return next(err)
+			}
+			res.json(data)
+		})
+})
+
+
+
+router.post('/addTodo:id', function (req, res, next) {
+	var user = req.session.user
+	var task = req.params.id
+	User.update({ username: user.username },
+		{ $push: { "tasks.inProgress": { name: task, edit: false } }},
+		function (err, data) {
+			if(err) {
+				return next(err)
+			}
+			res.json(data)
+		})
+})
+
+
+router.delete('/delTodo:task', function (req, res, next) {
+	var user = req.session.user
+	var task = req.params.task
+	User.update({ username: user.username }, 
+		{ $pull: { "tasks.inProgress": { name: task, edit: false } }},
+		function (err, data) {
+			if(err) {
+				return next(err)
+			}
+			res.json(data)
+		})
+})
+
+
+
 
 
 module.exports = router

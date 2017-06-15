@@ -18,14 +18,20 @@ html
 							a(href="home") Home
 						li
 							a(href="register") Register
-						li
-							a(href="profile") Profile
-						li
-							a(href="todo") To-do list
+						
+						if userLogged
+							li
+								a(href="profile") Profile
+								
+						if userLogged
+							li
+								a(href="todo") To-do list
 						li
 							a(href="login") Login
-						li
-							a(href='logout') Log out
+						
+						if userLogged
+							li
+								a(href='logout') Log out
 		.jumbotron.text-center
 			h1= title
 		block content
