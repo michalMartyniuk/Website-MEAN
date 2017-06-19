@@ -2,8 +2,10 @@ var app = angular.module('app')
 
 app.controller('todoCtrl', function ($scope, $http) {
 	
-	var mainMsg = true
-	var originMsg
+	const originMsg = $scope.$parent.mainMsg
+
+	$scope.originMsg = originMsg
+	
 	$scope.$parent.mainMsg = "To-do list"
 	$scope.tasks = []
 	$scope.doneTasks = []
@@ -25,16 +27,10 @@ app.controller('todoCtrl', function ($scope, $http) {
 
 	$scope.timeMsg = function(msg) {
 		
-		if(mainMsg == true){
-			originMsg = $scope.$parent.mainMsg
-		}
-
-		mainMsg = false 
 		$scope.$parent.mainMsg = msg
 
 		function parentMsg() {
 			$scope.$parent.mainMsg = originMsg
-			mainMsg = true
 		}
 
 		setTimeout(parentMsg, 3000)
@@ -54,7 +50,6 @@ app.controller('todoCtrl', function ($scope, $http) {
 			$scope.getTasks()
 			$scope.switchChange('success')
 
-			mainMsg = $scope.$parent.mainMsg
 			$scope.timeMsg("Your task has been deleted and added to your Done list")
 		}
 	}
@@ -65,7 +60,6 @@ app.controller('todoCtrl', function ($scope, $http) {
 				$scope.getTasks()
 				$scope.switchChange('success')
 
-				mainMsg = $scope.$parent.mainMsg
 				$scope.timeMsg("Your task was added successfully")
 			}, function (response) {
 				$scope.switchChange('error')
@@ -75,12 +69,12 @@ app.controller('todoCtrl', function ($scope, $http) {
 
 		else if($scope.title == ""){
 			$scope.switchChange('empty')
-			$scope.$parent.mainMsg = "Task field is empty. Please enter task to add."
+			$scope.timeMsg("Task field is empty. Please enter task to add.")
 			
 		}
 		else if($scope.tasks.includes($scope.title)) {
 			$scope.switchChange('error')
-			$scope.$parent.mainMsg = "This task already exists"
+			$scope.timeMsg("This task already exists")
 			
 		}
 	}

@@ -1,0 +1,137 @@
+body {
+	background-color: #1759AD;
+	color: white;
+	text-shadow: 0px 0px 20px black;
+	font-size: 25px;
+	letter-spacing: 2px;
+}
+
+#headlineWrapper {
+	height: 100px;
+	margin: 0px;
+	padding: 0px;
+	background-color: black;	
+}
+
+.jumboTitle {
+	display: none;
+	position: relative;
+	padding: 0px;
+	background-color: black;
+	/*background-color: #143062;*/
+	font-size: 70px;
+	height: 100px;
+}
+
+
+.jumboMenu {
+	display: none;
+	position: relative;
+	padding: 0px;
+	background-color: black;
+	/*background-color: #143062;*/
+	font-size: 25px;
+	height: 100px;
+}
+
+.jumboTitleShow {
+	display: block;
+	animation: jumboTitleShow 2s forwards;
+}
+
+.jumboMenuShow {
+	display: block;
+	animation: jumboShow 2s forwards;
+}
+
+.jumboDiv {
+	position: relative;
+	display: inline-block;
+	padding: 0px;
+	margin: 20px 20px;
+	border: 2px solid black;
+	border-radius: 15px;
+	width: 200px;
+	height: 50px;
+	font-size: 35px;
+}
+
+.jumboDiv a {
+	color: white;
+	text-decoration: none;
+}
+
+.jumboDiv a:hover {
+	animation: jumboA 0.5s forwards;
+}
+
+#contentWrapper {
+	position: absolute;
+	margin: 50px 0px 0px 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+
+/*Animation dynamic classes*/
+
+
+.divClass {
+	
+}
+
+.divSwitch {
+	animation: targetAnim 0.5s forwards;
+}
+
+.divSwitch2 {
+	animation: otherAnim 0.5s forwards;
+}
+
+@keyframes targetAnim {
+	0% { bottom: 0px;}
+	100% {
+		background-color: white;
+		width: 250px;
+		height: 70px;
+		font-size: 50px;
+		bottom: 10px;
+	}
+}
+
+@keyframes otherAnim {
+	0% { bottom: 0px; }
+
+	100% { opacity: 0.5; bottom: 15px;}
+
+}
+
+@keyframes jumboA {
+	0% {}
+	100% { color: black; text-shadow: 0px 0px 20px black; letter-spacing: 5px;}
+}
+
+
+@keyframes jumboShow {
+	0%{ opacity: 0;}
+	100%{ opacity: 1;}
+}
+
+@keyframes jumboTitleShow {
+	0%{ opacity: 0; letter-spacing: 0px;}
+	100%{ opacity: 1; letter-spacing: 50px;}
+}
+
+
+@keyframes jumbotronAnim {
+	0% {}
+	100% {
+		height: 150px;
+	}
+}
+
+
+
+
+

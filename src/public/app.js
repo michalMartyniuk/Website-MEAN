@@ -2,9 +2,37 @@ var app = angular.module('app', [])
 
 app.controller('mainCtrl', function ($scope, $http) {
 
-	$scope.listEnter = false
-	$scope.Enter = false
-	$scope.mainMsg = "Welcome"
+	// layoutNav Animation
+	$scope.headlineEnter = false
+	$scope.jumboDivs = jumboDivs	
+
+	$scope.switchCheck = function (num, action) {
+		if(action == 'enter') {
+			jumboDivs[num].switch = true	
+			for( var i=0; i<jumboDivs.length; i++) {
+				if(jumboDivs[i].switch == false) {
+					jumboDivs[i].switch2 = true
+				}
+			}	
+		}
+		else if(action == 'leave'){
+			jumboDivs[num].switch = false
+			for( var i=0; i<jumboDivs.length; i++) {
+				jumboDivs[i].switch2 = false
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+	// layoutNav Animation end
 
 	$scope.resetBck = function () {
 		$http.post('/resetBck')
@@ -34,9 +62,15 @@ app.controller('mainCtrl', function ($scope, $http) {
 				$scope.response = response.statusText
 		})
 	}
-
 	$scope.getUserData()
 })
 
 
 		
+var jumboDivs = [
+	{ switch: false, switch2: false, clickSwitch: false },
+	{ switch: false, switch2: false, clickSwitch: false },
+	{ switch: false, switch2: false, clickSwitch: false },
+	{ switch: false, switch2: false, clickSwitch: false },
+	{ switch: false, switch2: false, clickSwitch: false }
+]

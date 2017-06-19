@@ -1,0 +1,35 @@
+.profileRow {
+	margin: 10px 0px;
+}
+
+.resetBckRow {
+	margin-top: 50px;
+}
+
+#resetBck, #resetHeadBck {
+	margin: 0px;
+	padding: 0px;
+}
+
+#resetBck, #resetHeadBck:hover {
+	background-color: white;
+	color: black;
+	border: 2px solid black;
+	box-shadow: 0px 0px 20px black;
+	text-shadow: 0px 0px 20px black;
+}
+
+
+
+.profileKey {
+	background-color: grey;
+	border: 1px solid black;
+	box-shadow: 0px 0px 20px black;
+}
+
+.profileValue {
+	background-color: grey;
+	border: 1px solid black;
+	box-shadow: 0px 0px 20px black;	
+}
+

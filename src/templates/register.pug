@@ -4,17 +4,18 @@ block content
 	.container
 		h3 #{errors}
 	.container(ng-controller='registerCtrl')
-		form(method='post' action='/register')
-			.form-group
-				label(for='username') Username: 
-				input(type='username' class='form-control' name='username')
-			.form-group
-				label(for='name') Name:
-				input(type='text' class='form-control' name='name')
-			.form-group
-				label(for='email') Email: 
-				input(type='email' class='form-control' name='email')
-			.form-group
-				label(for='password') Password: 
-				input(type='password' class='form-control' name='password')
-			button(type='submit' class='btn btn-primary btn-lg btn-block' id='submitBtn') Submit
+		form(method='post' action='/register' class='col-xs-8 col-xs-offset-2')
+			.form-group.row
+				label(for='username' class='myLabel col-xs-2') Username: 
+				input(type='username' class='myInput col-xs-9 col-xs-offset-1' name='username' id='regUsername')
+			.form-group.row
+				label(for='name' class='myLabel col-xs-2') Name:
+				input(type='text' class='myInput col-xs-9 col-xs-offset-1' name='name')
+			.form-group.row
+				label(for='email' class='myLabel col-xs-2') Email: 
+				input(type='email' class='myInput col-xs-9 col-xs-offset-1' name='email')
+			.form-group.row
+				label(for='password' class='myLabel col-xs-2') Password: 
+				input(type='password' class='myInput col-xs-9 col-xs-offset-1' name='password')
+			.row
+				button(type='submit' class='btn btn-block btn-lg submitBtn') Submit

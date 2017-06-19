@@ -5,6 +5,7 @@ block content
       //- #errorMsg.alert(ng-class='{ "alert-danger": switches.error == true, "alert-success": switches.success == true, "alert-info": switches.empty == true }', ng-show='switches.error || switches.success || switches.empty')
       //-   | {{ msg }}
       div
+        h2 {{ originMsg }}
         #addDiv.form-group.col-md-8
           label(for='task') New task
           input#taskInput.form-control(ng-model='title', type='text', name='task')

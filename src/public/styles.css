@@ -1,11 +1,3 @@
-body {
-	background-color: #1759AD;
-	color: white;
-	text-shadow: 0px 0px 20px;
-	font-size: 25px;
-	letter-spacing: 2px;
-}
-
 #mainWrapper {
 	position: absolute;
 	margin: 50px 0px 0px 0px;
@@ -19,23 +11,7 @@ body {
 	padding: 0px;
 }
 
-#headlineWrapper:hover {
-	position: relative;
-	
-}
 
-.headlineEvent {
-
-}
-
-.jumboEvent {
-	animation: jumboAnim 0.5s forwards;
-}
-
-/*.navEvent {
-	animation: navAnim 0.5s forwards;
-}
-*/
 .jumbotron {
 	position: relative;
 	margin-top: 0px;
@@ -46,11 +22,7 @@ body {
 	font-size: 25px;	
 }
 
-.jumbotron:hover {}
 nav {}
-nav:hover {
-	animation: navAnim 0.5s forwards;
-}
 
 .navbar-header {
 	letter-spacing: 20px;
@@ -67,11 +39,26 @@ nav:hover {
 	letter-spacing: 5px;
 }
 
+/*.jumbotron:hover {}
+
+nav:hover {
+	animation: navAnim 0.5s forwards;
+}
+
+.headlineEvent {}
+
+.jumboEvent {
+	animation: jumboAnim 0.5s forwards;
+}
+
+.navEvent {
+	animation: navAnim 0.5s forwards;
+}
 
 .navListEvent {
 	animation: navListAnim 0.5s forwards;
 }
-
+*/
 
 #ulListDiv {}
 #ulList li {}
