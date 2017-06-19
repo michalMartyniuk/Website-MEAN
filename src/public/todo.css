@@ -1,5 +1,8 @@
+
+/*DONE TASKS AREA*/
 .doneTasks .well {
 	background-color: #ccffb5;
+	color: black;
 }
 
 
@@ -8,7 +11,7 @@
 	margin: 0px;
 }
 
-
+/*ERROR MSG*/
 #errorMsg {
 	text-align: center;
 	border-radius: 20px;
@@ -16,6 +19,7 @@
 
 }
 
+/*ADD TASKS AREA*/
 #addDiv {
 	padding: 0px;
 	font-size: 25px;
@@ -59,6 +63,9 @@
 .task {
 	font-size: 22px;
 }
+
+
+
 
 hr {
 	display: block;

@@ -1,0 +1,28 @@
+extends layout.pug
+
+block content
+
+	#galleryCont(ng-controller='imgCtrl'
+	class='container-fluid text-center')
+		div(id="myModal" class="modal")
+			div(class='row buttonCloseRow')
+				button(class='btn col-xs-5' ng-click='setBackground()') Set as background image
+				button(class='btn col-xs-5' ng-click='setHeadline()') Set as site headline image
+				span(class="close col-xs-2" 
+					onclick="document.getElementById('myModal').style.display='none'"
+				) &times;
+
+			img(class="modal-content" id="modalImg")
+			div(id="caption" class='col-xs-6') 
+				h1 Crysis
+
+		img(
+			ng-repeat='img in imgs'
+			ng-src='{{img.name}}'
+			class='gallImg'
+			ng-mouseover='imgOver()'
+			ng-mouseleave='imgLeave()'
+			ng-click='imgClick($event)'
+			ng-class='{ "imgOver": img.switch == true }'
+			)
+	

@@ -1,6 +1,10 @@
-angular.module('app', [])
+var app = angular.module('app')
 
-.controller('mainCtrl', function ($scope, $http) {
+app.controller('todoCtrl', function ($scope, $http) {
+	
+	var mainMsg = true
+	var originMsg
+	$scope.$parent.mainMsg = "To-do list"
 	$scope.tasks = []
 	$scope.doneTasks = []
 	$scope.title = ""
@@ -19,17 +23,39 @@ angular.module('app', [])
 
 	$scope.getTasks()
 
+	$scope.timeMsg = function(msg) {
+		
+		if(mainMsg == true){
+			originMsg = $scope.$parent.mainMsg
+		}
+
+		mainMsg = false 
+		$scope.$parent.mainMsg = msg
+
+		function parentMsg() {
+			$scope.$parent.mainMsg = originMsg
+			mainMsg = true
+		}
+
+		setTimeout(parentMsg, 3000)
+	}
+
+
+
 	$scope.done = function() {
 		if($scope.doneTasks.includes(this.task.name)) {
 			$scope.switchChange('error')
-			$scope.msg = "This task already exists"
+
+			$scope.timeMsg("This task already exists")
 		}
 		else {
 			$http.post('/doneTodo' + this.task.name)	
 			this.delete()
 			$scope.getTasks()
 			$scope.switchChange('success')
-			$scope.msg = "Your task has been deleted and added to your Done list"
+
+			mainMsg = $scope.$parent.mainMsg
+			$scope.timeMsg("Your task has been deleted and added to your Done list")
 		}
 	}
 
@@ -38,21 +64,23 @@ angular.module('app', [])
 			$http.post('/addTodo' + $scope.title).then(function (response) {
 				$scope.getTasks()
 				$scope.switchChange('success')
-				$scope.msg = "Your task was added successfully"
+
+				mainMsg = $scope.$parent.mainMsg
+				$scope.timeMsg("Your task was added successfully")
 			}, function (response) {
 				$scope.switchChange('error')
-				$scope.msg = response.statusText
+				$scope.$parent.mainMsg = response.statusText
 			})
 		}
 
 		else if($scope.title == ""){
 			$scope.switchChange('empty')
-			$scope.msg = "Task field is empty. Please enter task to add."
+			$scope.$parent.mainMsg = "Task field is empty. Please enter task to add."
 			
 		}
 		else if($scope.tasks.includes($scope.title)) {
 			$scope.switchChange('error')
-			$scope.msg = "This task already exists"
+			$scope.$parent.mainMsg = "This task already exists"
 			
 		}
 	}
@@ -61,7 +89,7 @@ angular.module('app', [])
 		$http.delete('/delTodo' + this.task.name)
 		$scope.getTasks()
 		$scope.switchChange('success')
-		$scope.msg = "Your task has been deleted"
+		$scope.$parent.mainMsg = "Your task has been deleted"
 	}
 
 	$scope.switchChange = function(state) {
@@ -84,7 +112,7 @@ angular.module('app', [])
 			$http.post('/editTodo' + task + '/' + this.task.name)
 			$scope.getTasks()
 			$scope.switchChange('success')
-			$scope.msg = "Edited task successfully"
+			$scope.$parent.mainMsg = "Edited task successfully"
 		}
 
 		else if (this.task.edit == false) {
@@ -100,9 +128,3 @@ var switches = {
 	error: false,
 	done: false
 }
-
-
-
-
-
-

@@ -10,7 +10,9 @@ const UserSchema = mongoose.Schema({
 	tasks: {
 		done: { type: Array },
 		inProgress: { type: Array }  
-	}
+	},
+	background: { type: String },
+	headlineB: { type: String }
 })
 
 const User = module.exports = mongoose.model('User', UserSchema)

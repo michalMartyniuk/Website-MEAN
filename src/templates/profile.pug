@@ -2,18 +2,22 @@ extends layout.pug
 
 block content
 	if userLogged
-		.row
-			.container(class='col-md-3')
-				h2 Username
-			.container(class='col-md-3')
-				h2 #{user.username}
-		.row
-			.container(class='col-md-3')
-				h2 Name
-			.container(class='col-md-3')
-				h2 #{user.name}
-		.row
-			.container(class='col-md-3')
-				h2 Email
-			.container(class='col-md-3')
-				h2 #{user.email}
+		.container(ng-controller='profileCtrl')
+			.row
+				button(class='btn btn-primary btn-lg col-xs-6' type='button' id='resetBck' ng-click='resetBck()') Reset Background
+				button(class='btn btn-primary btn-lg col-xs-6' type='button' id='resetHeadBck' ng-click='resetHeadBck()') Reset Headline Background
+			.row
+				.container(class='col-md-3')
+					h2 Username
+				.container(class='col-md-3')
+					h2 #{user.username}
+			.row
+				.container(class='col-md-3')
+					h2 Name
+				.container(class='col-md-3')
+					h2 #{user.name}
+			.row
+				.container(class='col-md-3')
+					h2 Email
+				.container(class='col-md-3')
+					h2 #{user.email}

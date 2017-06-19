@@ -22,6 +22,8 @@ app.use(function (req, res, next) {
 	if(req.session.user) {
 		res.locals.user = req.session.user
 		res.locals.userLogged = true
+		res.locals.background = req.session.user.background
+		res.locals.headlineB = req.session.user.headlineB
 	}
 	else {
 		res.locals.userLogged = false

@@ -15,30 +15,8 @@ router.get('/home', function (req, res, next) {
 })
 
 router.get('/todo', function (req, res, next) {
-
 	res.render('todo', { title: 'To-do list' })
 	next()
-})
-
-router.get('/validation', function (req, res, next) {
-	res.render('validation', { title: 'Form Validation', success: req.session.success, errors: req.session.errors})
-	req.session.errors = null
-})
-
-router.post('/validation', function (req, res, next) {
-	req.check('email', 'Invalid email address').isEmail()
-	// req.check('password', 'Password is invalid').isLength({min:4})
-
-	var errors = req.validationErrors()
-	if(errors) {
-		req.session.errors = errors
-		req.session.success = false
-		res.send(errors)
-	}
-	else {
-		req.session.success = true
-	}
-	res.redirect('/validation')
 })
 
 router.get('/blog', function (req, res, next) {
@@ -46,13 +24,18 @@ router.get('/blog', function (req, res, next) {
 	next()
 })
 
+router.get('/gallery', function (req, res, next) {
+	res.render('gallery', { title: 'Gallery' }) 
+	next()
+})
+
+
 router.get('/profile', function (req, res, next) {
 	if(!req.session.user) {
 		var err = new Error("Sorry! You need to be logged in to see this page")
 		return next(err)
 	}
-
-	res.render('profile', { title: 'Profile' } )
+	res.render('profile', { title: 'Profile' })
 })
 
 
@@ -62,6 +45,7 @@ router.get('/session', function (req, res, next) {
 
 router.get('/login', function (req, res, next) {
 	res.render('login', { title: 'Login' })
+	next()
 })
 
 
@@ -89,7 +73,8 @@ router.get('/logout', function (req, res, next) {
 })
 
 router.get('/register', function (req, res, next) {
-	res.render('register', { title: 'Sign up' })
+	res.render('register', { title: 'Register' })
+	next() 
 })
 
 router.post('/register', function (req, res, next) {
@@ -166,7 +151,6 @@ router.post('/addTodo:id', function (req, res, next) {
 		})
 })
 
-
 router.delete('/delTodo:task', function (req, res, next) {
 	var user = req.session.user
 	var task = req.params.task
@@ -180,8 +164,49 @@ router.delete('/delTodo:task', function (req, res, next) {
 		})
 })
 
+router.post('/background:userB', function (req, res, next) {
+	var userB = 'img/' + req.params.userB
+	var user = req.session.user
+	User.update({ username: user.username }, {$set: { background: userB }},
+		function (err, data) {
+			if(err) {
+				return next(err)
+			}
+		})
+})
+
+router.post('/headlineB:userB', function (req, res, next) {
+	var userB = 'img/' + req.params.userB
+	var user = req.session.user
+	User.update({ username: user.username }, {$set: { headlineB: userB }},
+		function (err, data) {
+			if(err) {
+				return next(err)
+			}
+			res.json(data)
+		})
+})
+
+router.post('/resetBck', function (req, res, next) {
+	User.update({ username: req.session.user.username },
+	{$set: { background: ""}}, function (err, data) {
+		if(err) {
+			return next(err)
+		}
+		res.json(data)
+	})
+})
 
 
+router.post('/resetHeadBck', function (req, res, next) {
+	User.update({ username: req.session.user.username },
+	{$set: { headlineB: ""}}, function (err, data) {
+		if(err) {
+			return next(err)
+		}
+		res.json(data)
+	})
+})
 
 
 module.exports = router

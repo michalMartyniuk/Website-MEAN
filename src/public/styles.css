@@ -1,5 +1,55 @@
+body {
+	background-color: #1759AD;
+	color: white;
+	text-shadow: 0px 0px 20px;
+	font-size: 25px;
+	letter-spacing: 2px;
+}
+
+#mainWrapper {
+	position: absolute;
+	margin: 50px 0px 0px 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+#headlineWrapper {
+	margin: 0px;
+	padding: 0px;
+}
+
+#headlineWrapper:hover {
+	position: relative;
+	
+}
+
+.headlineEvent {
+
+}
+
+.jumboEvent {
+	animation: jumboAnim 0.5s forwards;
+}
+
+/*.navEvent {
+	animation: navAnim 0.5s forwards;
+}
+*/
 .jumbotron {
-	background-color: lightblue;
+	position: relative;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	background-color: #143062;
+	font-size: 25px;	
+}
+
+.jumbotron:hover {}
+nav {}
+nav:hover {
+	animation: navAnim 0.5s forwards;
 }
 
 .navbar-header {
@@ -7,23 +57,25 @@
 	color: black;
 }
 
-#ulContMain {
-	
-}
-
-#ulContSub {
-	font-size: 20px;
-}
-
-#mainNav {
-	border: none;
+.navbar-inverse {
 	margin: 0px;
-
 }
 
-#ulId {
+
+.navWrapper {
+	font-size: 20px;
 	letter-spacing: 5px;
 }
+
+
+.navListEvent {
+	animation: navListAnim 0.5s forwards;
+}
+
+
+#ulListDiv {}
+#ulList li {}
+#ulList li a {}
 
 .errorDiv {
 	font-size: 25px;
@@ -32,4 +84,27 @@
 	border-radius: 20px;
 	text-align: center;
 	color: black;
+}
+
+@keyframes jumboAnim {
+	0% {}
+
+	100% {
+		font-size: 50px;
+		padding-top: 25px;
+		padding-bottom: 25px;
+
+	}
+}
+
+@keyframes navListAnim {
+	0% {}
+
+	100% { background-color: black; font-size: 25px; }
+}
+
+@keyframes navAnim {
+	0% {}
+
+	100% {}
 }

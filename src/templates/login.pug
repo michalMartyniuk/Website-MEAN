@@ -1,7 +1,7 @@
 extends layout.pug
 
 block content
-	.container
+	.container(ng-controller='loginCtrl')
 		form(method='post' action='/login')
 			.form-group
 				label(for='username') Username: 

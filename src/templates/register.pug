@@ -3,7 +3,7 @@ extends layout.pug
 block content
 	.container
 		h3 #{errors}
-	.container
+	.container(ng-controller='registerCtrl')
 		form(method='post' action='/register')
 			.form-group
 				label(for='username') Username: 
