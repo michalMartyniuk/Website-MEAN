@@ -6,7 +6,7 @@ app.controller('todoCtrl', function ($scope, $http) {
 
 	$scope.originMsg = originMsg
 	
-	$scope.$parent.mainMsg = "To-do list"
+	$scope.$parent.mainMsg = "To-do"
 	$scope.tasks = []
 	$scope.doneTasks = []
 	$scope.title = ""

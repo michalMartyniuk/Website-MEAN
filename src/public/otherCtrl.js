@@ -6,6 +6,12 @@ app.controller('homeCtrl', function ($scope) {
 
 app.controller('registerCtrl', function ($scope) {
 	$scope.$parent.mainMsg = 'Sign up'
+
+
+
+
+
+
 })
 
 app.controller('loginCtrl', function ($scope) {

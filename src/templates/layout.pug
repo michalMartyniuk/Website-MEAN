@@ -18,56 +18,77 @@ html
 				|{{ mainMsg }}
 			
 			.jumbotron.text-center(class='jumboMenu' ng-class='{ jumboMenuShow: headlineEnter == true }')
-				//- div(
-				//- 	class='jumboDiv'
-				//- 	ng-class="{ divClass: jumboDivs[0].switch == false, divSwitch: jumboDivs[0].switch == true, divSwitch2: jumboDivs[0].switch2 == true }"
-				//- 	ng-mouseenter='switchCheck(0,"enter")'
-				//- 	ng-mouseleave='switchCheck(0,"leave")'
-				//- 	ng-click='jumboDivs[0].clickSwitch = true'
-				//- )
-					
-				div(
-					class='jumboDiv'
-					ng-class="{ divClass: jumboDivs[1].switch == false, divSwitch: jumboDivs[1].switch == true, divSwitch2: jumboDivs[1].switch2 == true }"
-					ng-mouseenter='switchCheck(1,"enter")'
-					ng-mouseleave='switchCheck(1,"leave")'
-					ng-click='jumboDivs[1].clickSwitch = true'
-				)
-					a(href='home') Home
-				div(
-					class='jumboDiv'
-					ng-class="{ divClass: jumboDivs[2].switch == false, divSwitch: jumboDivs[2].switch == true, divSwitch2: jumboDivs[2].switch2 == true }"
-					ng-mouseenter='switchCheck(2,"enter")'
-					ng-mouseleave='switchCheck(2,"leave")'
-					ng-click='jumboDivs[2].clickSwitch = true'
-				)
-					a(href='register') Register
-				div(
-					class='jumboDiv'
-					ng-class="{ divClass: jumboDivs[3].switch == false, divSwitch: jumboDivs[3].switch == true, divSwitch2: jumboDivs[3].switch2 == true }"
-					ng-mouseenter='switchCheck(3,"enter")'
-					ng-mouseleave='switchCheck(3,"leave")'
-					ng-click='jumboDivs[3].clickSwitch = true'
-				)
-					a(href='gallery') Gallery
-			if !userLogged
-				//- div(class='jumboDiv')
-				//- 	a(href="login") Login
-			
-			if userLogged
-				//- a(href="profile") Profile
-				//- a(href="todo") To-do list
-				//- a(href='logout') Log out
+				
+				div(class='jumboDivWrapper')
+					div(
+						class='jumboDiv'
+						ng-class="{ divClass: jumboDivs[0].switch == false, divSwitch: jumboDivs[0].switch == true, divSwitch2: jumboDivs[0].switch2 == true }"
+						ng-mouseenter='switchCheck(0,"enter")'
+						ng-mouseleave='switchCheck(0,"leave")'
+						ng-click='jumboDivs[0].clickSwitch = true'
+					)
+						a(href='home') Home
+				div(class='jumboDivWrapper')
+					div(
+						class='jumboDiv'
+						ng-class="{ divClass: jumboDivs[2].switch == false, divSwitch: jumboDivs[2].switch == true, divSwitch2: jumboDivs[2].switch2 == true }"
+						ng-mouseenter='switchCheck(2,"enter")'
+						ng-mouseleave='switchCheck(2,"leave")'
+						ng-click='jumboDivs[2].clickSwitch = true'
+					)
+						a(href='gallery') Gallery
+				if !userLogged
+					div(class='jumboDivWrapper')
+						div(
+							class='jumboDiv'
+							ng-class="{ divClass: jumboDivs[1].switch == false, divSwitch: jumboDivs[1].switch == true, divSwitch2: jumboDivs[1].switch2 == true }"
+							ng-mouseenter='switchCheck(1,"enter")'
+							ng-mouseleave='switchCheck(1,"leave")'
+							ng-click='jumboDivs[1].clickSwitch = true'
+						)
+							a(href='register') Register
 
-	
+					div(class='jumboDivWrapper')
+						div(
+							class='jumboDiv'
+							ng-class="{ divClass: jumboDivs[3].switch == false, divSwitch: jumboDivs[3].switch == true, divSwitch2: jumboDivs[3].switch2 == true }"
+							ng-mouseenter='switchCheck(3,"enter")'
+							ng-mouseleave='switchCheck(3,"leave")'
+							ng-click='jumboDivs[2].clickSwitch = true'
+						)
+							a(href='login') Login
+				if userLogged
+					div(class='jumboDivWrapper')
+						div(
+							class='jumboDiv'
+							ng-class="{ divClass: jumboDivs[4].switch == false, divSwitch: jumboDivs[4].switch == true, divSwitch2: jumboDivs[4].switch2 == true }"
+							ng-mouseenter='switchCheck(4,"enter")'
+							ng-mouseleave='switchCheck(4,"leave")'
+							ng-click='jumboDivs[4].clickSwitch = true'
+						)
+							a(href='profile') Profile
+
+					div(class='jumboDivWrapper')
+						div(
+							class='jumboDiv'
+							ng-class="{ divClass: jumboDivs[5].switch == false, divSwitch: jumboDivs[5].switch == true, divSwitch2: jumboDivs[5].switch2 == true }"
+							ng-mouseenter='switchCheck(5,"enter")'
+							ng-mouseleave='switchCheck(5,"leave")'
+							ng-click='jumboDivs[5].clickSwitch = true'
+						)
+							a(href='todo') To-do
+
+					div(class='jumboDivWrapper')
+						div(
+							class='jumboDiv'
+							ng-class="{ divClass: jumboDivs[6].switch == false, divSwitch: jumboDivs[6].switch == true, divSwitch2: jumboDivs[6].switch2 == true }"
+							ng-mouseenter='switchCheck(6,"enter")'
+							ng-mouseleave='switchCheck(6,"leave")'
+							ng-click='jumboDivs[6].clickSwitch = true'
+						)
+							a(href='logout') Log out
+
 		.container-fluid(id='contentWrapper')
-			//- h2(ng-repeat='div in jumboDivs')
-			//- 	|div.switch: {{ div.switch }}, div.switch2: {{ div.switch2 }}, 
-			//- 	|div.clickSwitch: {{ div.clickSwitch }}
-			h2(id='arrayInf')
-			//- h3(id='offsetInf')
-			//- h3(id='windowPropInf')
-			//- h3(id='elementInf')
 			block content
 
 		

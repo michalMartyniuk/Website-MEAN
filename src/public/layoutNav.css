@@ -1,37 +1,57 @@
+:root {
+	--bck: #101F3C;
+	--txtCol: #E5A64E;
+	--headBck: black;
+	/*--headBck: #17438A;*/
+	/*--headBck: #751805;
+	--headBck: #751805;
+	--headBck: #751805;
+	--headBck: #751805;
+	--headBck: #751805;*/
+}
+
+
 body {
-	background-color: #1759AD;
-	color: white;
-	text-shadow: 0px 0px 20px black;
+	background-color: var(--bck);
+	color: var(--txtCol);
+	/*text-shadow: 0px 0px 2px #E5A64E;*/
+	/*text-shadow: 0px 0px 5px black;*/
 	font-size: 25px;
+	font-weight: bold;
 	letter-spacing: 2px;
 }
 
 #headlineWrapper {
-	height: 100px;
+	height: 70px;
 	margin: 0px;
 	padding: 0px;
-	background-color: black;	
+	background-color: var(--headBck);
+	box-shadow: 0px 10px 40px var(--headBck);
 }
+
+#contentWrapper {
+	/*box-shadow: 0px 0px 200px orange;*/
+}
+
 
 .jumboTitle {
 	display: none;
 	position: relative;
-	padding: 0px;
-	background-color: black;
+	padding-top: 10px;
+	background-color: var(--headBck);
 	/*background-color: #143062;*/
-	font-size: 70px;
-	height: 100px;
+	font-size: 50px;
+	height: 70px;
 }
 
 
 .jumboMenu {
+	/*background-color: #143062;*/
 	display: none;
 	position: relative;
 	padding: 0px;
-	background-color: black;
-	/*background-color: #143062;*/
-	font-size: 25px;
-	height: 100px;
+	background-color: var(--headBck);
+	height: 70px;
 }
 
 .jumboTitleShow {
@@ -44,20 +64,27 @@ body {
 	animation: jumboShow 2s forwards;
 }
 
+.jumboDivWrapper{
+	display: inline-block;
+	margin: 0px 0px;
+	padding: 0px;
+	width: 200px;
+}
+
 .jumboDiv {
 	position: relative;
 	display: inline-block;
-	padding: 0px;
-	margin: 20px 20px;
-	border: 2px solid black;
+	margin: 20px 0px;
 	border-radius: 15px;
-	width: 200px;
+	width: 150px;
 	height: 50px;
-	font-size: 35px;
+	font-size: 30px;
+	background-color: var(--headBck);	
 }
 
 .jumboDiv a {
-	color: white;
+	position: relative;
+	color: var(--txtCol);
 	text-decoration: none;
 }
 
@@ -90,26 +117,30 @@ body {
 }
 
 @keyframes targetAnim {
-	0% { bottom: 0px;}
+	0% { 
+		
+	}
 	100% {
-		background-color: white;
-		width: 250px;
-		height: 70px;
-		font-size: 50px;
-		bottom: 10px;
+/*		background-color: white;*/
+		width: 200px;
+		font-size: 35px;
 	}
 }
 
 @keyframes otherAnim {
 	0% { bottom: 0px; }
 
-	100% { opacity: 0.5; bottom: 15px;}
+	100% { opacity: 0.5; bottom: 6px;}
 
 }
 
 @keyframes jumboA {
-	0% {}
-	100% { color: black; text-shadow: 0px 0px 20px black; letter-spacing: 5px;}
+	0% { }
+	100% { 
+/*		color: black;*/
+	 	text-shadow: 0px 0px 20px black; 
+		letter-spacing: 5px;
+	}
 }
 
 
@@ -120,7 +151,7 @@ body {
 
 @keyframes jumboTitleShow {
 	0%{ opacity: 0; letter-spacing: 0px;}
-	100%{ opacity: 1; letter-spacing: 50px;}
+	100%{ opacity: 1; letter-spacing: 20px;}
 }
 
 

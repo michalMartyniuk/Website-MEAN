@@ -72,5 +72,10 @@ var jumboDivs = [
 	{ switch: false, switch2: false, clickSwitch: false },
 	{ switch: false, switch2: false, clickSwitch: false },
 	{ switch: false, switch2: false, clickSwitch: false },
-	{ switch: false, switch2: false, clickSwitch: false }
+	{ switch: false, switch2: false, clickSwitch: false },
+	{ switch: false, switch2: false, clickSwitch: false },
+	{ switch: false, switch2: false, clickSwitch: false },
+	{ switch: false, switch2: false, clickSwitch: false },
+	{ switch: false, switch2: false, clickSwitch: false },
+	{ switch: false, switch2: false, clickSwitch: false },
 ]
