@@ -1,12 +1,12 @@
 {
   "name": "Express3",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Michał Martyniuk",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -15,6 +15,11 @@
     "express-session": "^1.15.3",
     "express-validator": "^3.2.0",
     "mongoose": "^4.10.4",
-    "pug": "^0.1.0"
+    "pug": "^0.1.0",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "passport": "*",
+    "passport-jwt": "*"
   }
 }

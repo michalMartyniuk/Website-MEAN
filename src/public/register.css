@@ -1,0 +1,37 @@
+form {
+	margin: 0px;
+	padding: 0px;
+}
+
+.form-group {
+	border-radius: 5px;
+	color: lightblue;
+	box-shadow: 0px 0px 5px #0b2c60;
+	text-shadow: none;
+
+}
+
+
+.myLabel {
+	margin: 0px;
+	padding: 0px;
+}
+
+/*.myInput {
+	border: 2px solid black;
+	height: 40px;
+	border-radius: 5px;
+	color: black;
+	font-size: 25px;
+}
+*/
+.submitBtn {
+	background-color: darkblue;
+}
+
+/*#regUsername:focus {
+	height: 50px;
+	box-shadow: 0px 0px 20px white;
+
+}
+*/

@@ -1,0 +1,75 @@
+
+/*DONE TASKS AREA*/
+.doneTasks .well {
+	background-color: #ccffb5;
+	color: black;
+}
+
+
+.doneTasks {
+	padding: 0px;
+	margin: 0px;
+}
+
+/*ERROR MSG*/
+#errorMsg {
+	text-align: center;
+	border-radius: 20px;
+	margin: 50px 0px;
+
+}
+
+/*ADD TASKS AREA*/
+#addDiv {
+	padding: 0px;
+	font-size: 25px;
+}
+
+#addBtnDiv {
+	padding-top: 42px;
+	padding-left: 12px;
+	padding-right: 0px;
+}
+
+#addBtn {
+	font-size: 20px;
+}
+
+
+#taskInput {
+	height: 50px;
+	font-size: 25px; 
+}
+
+.task-text {
+	padding: 10px;
+}
+
+.task-btn {
+	margin: 0px;
+	padding: 8px 0px;
+}
+
+.task-btn button {
+	margin: 0px 5px;
+	width: 85px;
+}
+
+.myBtn {
+	margin: 0px 5px;
+	width: 85px;
+}
+
+.task {
+	font-size: 22px;
+}
+
+
+
+
+hr {
+	display: block;
+	clear: both;
+	background-color: black;
+	height: 2px;
+}

@@ -1,0 +1,168 @@
+:root {
+	--bck: #101F3C;
+	--txtCol: #E5A64E;
+	--headBck: black;
+	/*--headBck: #17438A;*/
+	/*--headBck: #751805;
+	--headBck: #751805;
+	--headBck: #751805;
+	--headBck: #751805;
+	--headBck: #751805;*/
+}
+
+
+body {
+	background-color: var(--bck);
+	color: var(--txtCol);
+	/*text-shadow: 0px 0px 2px #E5A64E;*/
+	/*text-shadow: 0px 0px 5px black;*/
+	font-size: 25px;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+#headlineWrapper {
+	height: 70px;
+	margin: 0px;
+	padding: 0px;
+	background-color: var(--headBck);
+	box-shadow: 0px 10px 40px var(--headBck);
+}
+
+#contentWrapper {
+	/*box-shadow: 0px 0px 200px orange;*/
+}
+
+
+.jumboTitle {
+	display: none;
+	position: relative;
+	padding-top: 10px;
+	background-color: var(--headBck);
+	/*background-color: #143062;*/
+	font-size: 50px;
+	height: 70px;
+}
+
+
+.jumboMenu {
+	/*background-color: #143062;*/
+	display: none;
+	position: relative;
+	padding: 0px;
+	background-color: var(--headBck);
+	height: 70px;
+}
+
+.jumboTitleShow {
+	display: block;
+	animation: jumboTitleShow 2s forwards;
+}
+
+.jumboMenuShow {
+	display: block;
+	animation: jumboShow 2s forwards;
+}
+
+.jumboDivWrapper{
+	display: inline-block;
+	margin: 0px 0px;
+	padding: 0px;
+	width: 200px;
+}
+
+.jumboDiv {
+	position: relative;
+	display: inline-block;
+	margin: 20px 0px;
+	border-radius: 15px;
+	width: 150px;
+	height: 50px;
+	font-size: 30px;
+	background-color: var(--headBck);	
+}
+
+.jumboDiv a {
+	position: relative;
+	color: var(--txtCol);
+	text-decoration: none;
+}
+
+.jumboDiv a:hover {
+	animation: jumboA 0.5s forwards;
+}
+
+#contentWrapper {
+	position: absolute;
+	margin: 50px 0px 0px 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+
+/*Animation dynamic classes*/
+
+
+.divClass {
+	
+}
+
+.divSwitch {
+	animation: targetAnim 0.5s forwards;
+}
+
+.divSwitch2 {
+	animation: otherAnim 0.5s forwards;
+}
+
+@keyframes targetAnim {
+	0% { 
+		
+	}
+	100% {
+/*		background-color: white;*/
+		width: 200px;
+		font-size: 35px;
+	}
+}
+
+@keyframes otherAnim {
+	0% { bottom: 0px; }
+
+	100% { opacity: 0.5; bottom: 6px;}
+
+}
+
+@keyframes jumboA {
+	0% { }
+	100% { 
+/*		color: black;*/
+	 	text-shadow: 0px 0px 20px black; 
+		letter-spacing: 5px;
+	}
+}
+
+
+@keyframes jumboShow {
+	0%{ opacity: 0;}
+	100%{ opacity: 1;}
+}
+
+@keyframes jumboTitleShow {
+	0%{ opacity: 0; letter-spacing: 0px;}
+	100%{ opacity: 1; letter-spacing: 20px;}
+}
+
+
+@keyframes jumbotronAnim {
+	0% {}
+	100% {
+		height: 150px;
+	}
+}
+
+
+
+
+

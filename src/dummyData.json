@@ -1,0 +1,34 @@
+db.users.insert([
+
+	{
+		username: "talos",
+		name: "talos",
+		email: "talos@wwp.pl",
+		password: "talos",
+		tasks: {
+			inProgress: ["task1", "task2", "task3", "task4"],
+			done: ["done1", "done2"]
+		}
+	},
+
+	{
+		username: "asuka",
+		name: "asuka",
+		email: "asuka@wp.pl",
+		password: "asuka",
+		tasks: {
+			inProgress: ["task1", "task2", "task3", "task4"],
+			done: ["done1", "done2"]
+		}
+	},
+
+	{
+		username: "aranda",
+		name: "aranda",
+		email: "aranda@wp.pl",
+		password: "aranda",
+		tasks: {
+			inProgress: ["task1", "task2", "task3", "task4"],
+			done: ["done1", "done2"]
+		}
+	}])

@@ -3,26 +3,106 @@ html
 	head
 		link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
 		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
-		link(href='styles.css' rel='stylesheet' type='text/css')
+		link(href='layoutNav.css' rel='stylesheet' type='text/css')
+		link(href='profile.css' rel='stylesheet' type='text/css')
+		link(href='register.css' rel='stylesheet' type='text/css')
+		link(href='todo.css' rel='stylesheet' type='text/css')
+		link(href='gallery.css' rel='stylesheet' type='text/css')
 
 		title= title
-	body
-		nav#mainNav(class='navbar navbar-inverse fixed-top')
-			.navbar-header.col-md-3
-				a(class='navbar-brand' href='home') Website	
-			.container#ulContMain.col-md-9
-				.container#ulContSub.col-md-12.col-md-offset-1
-					ul#ulId(class='nav navbar-nav col-md-12')
-						li
-							a(href="home") Home
-						li
-							a(href="register") Register
-						li
-							a(href="profile") Profile
-		.jumbotron.text-center
-			h1= title
-		block content
+	body(ng-app='app' ng-controller='mainCtrl')
+
+		
+		.container-fluid(id='headlineWrapper' ng-mouseenter='headlineEnter = true' ng-mouseleave='headlineEnter = false' ng-class='{ headlineEvent: headlineEnter == true }')
+			.jumbotron.text-center(class='jumboTitle' ng-class='{ jumboTitleShow: headlineEnter == false }')
+				|{{ mainMsg }}
+			
+			.jumbotron.text-center(class='jumboMenu' ng-class='{ jumboMenuShow: headlineEnter == true }')
+				
+				div(class='jumboDivWrapper')
+					div(
+						class='jumboDiv'
+						ng-class="{ divClass: jumboDivs[0].switch == false, divSwitch: jumboDivs[0].switch == true, divSwitch2: jumboDivs[0].switch2 == true }"
+						ng-mouseenter='switchCheck(0,"enter")'
+						ng-mouseleave='switchCheck(0,"leave")'
+						ng-click='jumboDivs[0].clickSwitch = true'
+					)
+						a(href='home') Home
+				div(class='jumboDivWrapper')
+					div(
+						class='jumboDiv'
+						ng-class="{ divClass: jumboDivs[2].switch == false, divSwitch: jumboDivs[2].switch == true, divSwitch2: jumboDivs[2].switch2 == true }"
+						ng-mouseenter='switchCheck(2,"enter")'
+						ng-mouseleave='switchCheck(2,"leave")'
+						ng-click='jumboDivs[2].clickSwitch = true'
+					)
+						a(href='gallery') Gallery
+				if !userLogged
+					div(class='jumboDivWrapper')
+						div(
+							class='jumboDiv'
+							ng-class="{ divClass: jumboDivs[1].switch == false, divSwitch: jumboDivs[1].switch == true, divSwitch2: jumboDivs[1].switch2 == true }"
+							ng-mouseenter='switchCheck(1,"enter")'
+							ng-mouseleave='switchCheck(1,"leave")'
+							ng-click='jumboDivs[1].clickSwitch = true'
+						)
+							a(href='register') Register
+
+					div(class='jumboDivWrapper')
+						div(
+							class='jumboDiv'
+							ng-class="{ divClass: jumboDivs[3].switch == false, divSwitch: jumboDivs[3].switch == true, divSwitch2: jumboDivs[3].switch2 == true }"
+							ng-mouseenter='switchCheck(3,"enter")'
+							ng-mouseleave='switchCheck(3,"leave")'
+							ng-click='jumboDivs[2].clickSwitch = true'
+						)
+							a(href='login') Login
+				if userLogged
+					div(class='jumboDivWrapper')
+						div(
+							class='jumboDiv'
+							ng-class="{ divClass: jumboDivs[4].switch == false, divSwitch: jumboDivs[4].switch == true, divSwitch2: jumboDivs[4].switch2 == true }"
+							ng-mouseenter='switchCheck(4,"enter")'
+							ng-mouseleave='switchCheck(4,"leave")'
+							ng-click='jumboDivs[4].clickSwitch = true'
+						)
+							a(href='profile') Profile
+
+					div(class='jumboDivWrapper')
+						div(
+							class='jumboDiv'
+							ng-class="{ divClass: jumboDivs[5].switch == false, divSwitch: jumboDivs[5].switch == true, divSwitch2: jumboDivs[5].switch2 == true }"
+							ng-mouseenter='switchCheck(5,"enter")'
+							ng-mouseleave='switchCheck(5,"leave")'
+							ng-click='jumboDivs[5].clickSwitch = true'
+						)
+							a(href='todo') To-do
+
+					div(class='jumboDivWrapper')
+						div(
+							class='jumboDiv'
+							ng-class="{ divClass: jumboDivs[6].switch == false, divSwitch: jumboDivs[6].switch == true, divSwitch2: jumboDivs[6].switch2 == true }"
+							ng-mouseenter='switchCheck(6,"enter")'
+							ng-mouseleave='switchCheck(6,"leave")'
+							ng-click='jumboDivs[6].clickSwitch = true'
+						)
+							a(href='logout') Log out
+
+		.container-fluid(id='contentWrapper')
+			block content
+
+		
+
+
+
+
+
 
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js") 
-		script(src='jsFile.js')
+		script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js")
+		script(src='layoutNav.js')
+		script(src='app.js') 
+		script(src='todo.js')
+		script(src='gallery.js')
+		script(src='otherCtrl.js')
+

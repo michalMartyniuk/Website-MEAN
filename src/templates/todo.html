@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href='todo.css' rel='stylesheet' type='text/css'>
+	<meta charset="UTF-8">
+	<title>To-do list</title>
+</head>
+<body ng-app='app' ng-controller='mainCtrl'>
+
+	<div class="task container col-md-8 col-md-offset-2">
+		
+		<h1 class='text-center'>To-do list</h1>
+		<div 
+			id='errorMsg'
+			class='alert'
+			ng-class='{ "alert-danger": switches.error == true, "alert-success": switches.success == true, "alert-info": switches.empty == true }'
+			ng-show='switches.error || switches.success || switches.empty'
+			
+			>{{ msg }}
+		</div>
+
+		<div>
+			<div class="form-group col-md-8" id='addDiv'>
+				<label for="task">New task</label>
+				<input id='taskInput' ng-model='title' type="text" name='task' class='form-control'>
+			</div>
+			<div class='col-md-4' id='addBtnDiv'>
+				<button ng-click='add()' class='btn btn-success btn-lg btn-block' id='addBtn'>Add</button>
+			</div>
+		<div ng-repeat='task in tasks'>
+			<h2>{{ task.editS }}</h2>
+			<div ng-show='!task.editS' class='well col-md-8 task-text'>
+				<p>{{ task.name }}</p>
+			</div>
+	
+			<div ng-show='task.editS' class='well col-md-8 task-text'>
+				<input id='taskInput' ng-model='editModel' type="text" class='form-control'>
+			</div>
+
+			<div class="col-md-4 task-btn">
+				<button class='btn btn-lg btn-danger pull-right' ng-click='delete()'>Delete</button>
+				<button class='btn btn-lg btn-primary pull-right' ng-click='edit()'>Edit</button>
+				<button class='btn btn-lg btn-success pull-right' ng-click='done()'>Done</button>
+			</div>
+		</div>
+		<div class='col-md-12 doneTasks'>
+			<h2><strong>Done tasks list</strong></h2>
+			<div ng-repeat='task in doneTasks' class='col-md-12 well task-text'>
+				{{ task }}
+			</div>
+		</div>
+		
+
+
+	</div>
+	<h1 class='col-md-12'></h1>
+	<!-- <h2 class='col-md-12' ng-repeat='task in tasks'>{{ task }}</h2> -->
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="todo.js" type="text/javascript"></script>
+</body>
+</html>

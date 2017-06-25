@@ -1,11 +1,62 @@
-nav(class='navbar navbar-inverse')
-	.container-fluid
-		.navbar-header
-			a(class='navbar-brand' href='home') Website
-		ul(class='nav navbar-nav')
-			li
-				a(href="home") Home
-			li
-				a(href="register") Register
-			li
-				a(href="profile") Profile
+//- LAYOUT ORIGINAL NAV
+nav(class='navbar navbar-inverse fixed-top' 
+			ng-class='{ navEvent: headlineEnter == true }')
+				//- .navbar-header
+				//- 	a(class='navbar-brand' href='home') Website
+				.col-xs-12.navWrapper
+					.col-xs-8.col-xs-offset-2#ulListDiv(
+					ng-mouseenter='listEnter = true'
+					ng-mouseleave='listEnter = false'
+					ng-class='{ navListEvent: listEnter == true }'
+					)
+						ul(class='nav navbar-nav')
+							li
+								a(href="home") Home
+							li
+								a(href="register") Register
+							li
+								a(href='gallery') Gallery				
+							
+							if !userLogged
+								li
+									a(href="login") Login
+							
+							if userLogged
+								li
+									a(href="profile") Profile							
+								li
+									a(href="todo") To-do list
+								li
+									a(href='logout') Log out
+
+//- LAYOUT ORIGINAL NAV END
+
+
+
+.container-fluid
+	nav#mainNav(class='navbar navbar-inverse fixed-top')
+		.navbar-header.col-md-3
+			a(class='navbar-brand' href='home') Website	
+		.container#ulContMain.col-md-9
+			.container#ulContSub.col-md-12.col-md-offset-1
+				ul#ulId(class='nav navbar-nav col-md-12')
+					li
+						a(href="home") Home
+					li
+						a(href="register") Register
+					li
+						a(href='gallery') Gallery
+												
+					if userLogged
+						li
+							a(href="profile") Profile
+							
+					if userLogged
+						li
+							a(href="todo") To-do list
+					li
+						a(href="login") Login
+					
+					if userLogged
+						li
+							a(href='logout') Log out
