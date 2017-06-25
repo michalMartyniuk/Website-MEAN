@@ -10,6 +10,8 @@ const cookieParser = require('cookie-parser')
 const db = 'mongodb://localhost/fenix'
 const passport = require('passport')
 const cors = require('cors')
+const port = process.env.PORT || 7000
+
 mongoose.connect(db)
 
 app.use(session({
@@ -53,6 +55,6 @@ app.use(function (err, req, res, next) {
 })
 
 
-app.listen(7000, function(){
+app.listen( port, function(){
 	console.log('server is working on 7000 port')
 })
