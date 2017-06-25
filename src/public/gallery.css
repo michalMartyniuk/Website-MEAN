@@ -1,19 +1,28 @@
-/*.gallDiv {
-	background-color: red;
-	margin: 20px;
-}
-*/
 
 #galleryCont {
 }
 
+.imgDiv {
+	position: relative;
+	width: 420px;
+	height: 255px;
+	display: inline-block;
+	text-align: center;
+}
+
+
 .gallImg {
+	position: relative;
+	display: block;
+	text-align: center;
 	box-shadow: 0px 0px 20px black;
 	background-color: black;
 	padding: 5px;
-	margin: 20px;
+	margin: 0px;
 	width: 350px;
 	height: 200px;
+	left: 35px;
+	top: 27.5px;
 }
 
 .imgOver {
@@ -24,15 +33,19 @@
 
 @keyframes imgAnim {
 	0% {
+		top: 27.5px;
+		left: 35px;
 		width: 350px;
 		height: 200px;
 	}
 
 	100% {
+		top: 0px;
+		left: 10px;
 		width: 400px;
 		height: 250px;
-		box-shadow: 0px 0px 200px white;
-		background-color: white;
+		box-shadow: 0px 0px 200px #E5A64E;
+		background-color: #E5A64E;
 	}
 }
 

@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const expressValidator = require('express-validator')
 const cookieParser = require('cookie-parser')
-const db = 'mongodb://localhost/blog'
+const db = 'mongodb://localhost/fenix'
 const passport = require('passport')
 const cors = require('cors')
 mongoose.connect(db)

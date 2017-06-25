@@ -16,13 +16,12 @@ block content
 			div(id="caption" class='col-xs-6') 
 				h1 Crysis
 
-		img(
-			ng-repeat='img in imgs'
-			ng-src='{{img.name}}'
-			class='gallImg'
-			ng-mouseover='imgOver()'
-			ng-mouseleave='imgLeave()'
-			ng-click='imgClick($event)'
-			ng-class='{ "imgOver": img.switch == true }'
-			)
-	
+		div(class='imgDiv' ng-repeat='img in imgs')
+			img(
+				ng-src='{{img.name}}'
+				class='gallImg'
+				ng-mouseover='imgOver()'
+				ng-mouseleave='imgLeave()'
+				ng-click='imgClick($event)'
+				ng-class='{ "imgOver": img.switch == true }'
+				)

@@ -1,22 +1,31 @@
 extends layout.pug
 
 block content
+	//- FLEX TEST
+
+	
+			
+
+
+
+
+
 	if userLogged
-		.container(ng-controller='profileCtrl')
+		div(class='mainFlex' ng-controller='profileCtrl')
+			div(class='flex-item-container')
+				div(class='flex-item-one') Username: 
+				div(class='flex-item-two') #{user.username}
+			div(class='flex-item-container')
+				div(class='flex-item-one') Name: 
+				div(class='flex-item-two') #{user.name}
+			div(class='flex-item-container')
+				div(class='flex-item-one') Email: 
+				div(class='flex-item-two') #{user.email}
+			div(class='flex-item-container')
+				div(class='flex-item-one') Another info: 
+				div(class='flex-item-two') another info
 			
-			.row(class='profileRow')
-				.container(class='col-md-4 col-xs-offset-2 profileKey') Username
-				.container(class='col-md-4 profileValue') #{user.username}
-			
-			.row(class='profileRow')
-				.container(class='col-md-4 col-xs-offset-2 profileKey') Name
-				.container(class='col-md-4 profileValue') #{user.name}
-			
-			.row(class='profileRow')
-				.container(class='col-md-4 col-xs-offset-2 profileKey') Email
-				.container(class='col-md-4 profileValue') #{user.email}
-			
-			.row(class='resetBckRow')
-				button(class='btn btn-primary btn-lg col-xs-8 col-xs-offset-2 submitBtn' type='button' ng-click='resetBck()') Reset Background
-			.row(class='resetHeadBckRow')
-				button(class='btn btn-primary btn-lg col-xs-8 col-xs-offset-2 submitBtn' type='button' ng-click='resetHeadBck()') Reset Headline Background
+	//- 		//- div(class='resetBckRow')
+	//- 		//- 	button(class='btn btn-primary btn-lg submitBtn' type='button' ng-click='resetBck()') Reset Background
+	//- 		//- div(class='resetHeadBckRow')
+	//- 		//- 	button(class='btn btn-primary btn-lg submitBtn' type='button' ng-click='resetHeadBck()') Reset Headline Background

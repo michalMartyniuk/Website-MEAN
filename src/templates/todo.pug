@@ -1,28 +1,31 @@
 extends layout.pug
 
 block content
-    .task.container.col-md-8.col-md-offset-2(ng-controller='todoCtrl')
+    div(class='task-main-container' ng-controller='todoCtrl')
       //- #errorMsg.alert(ng-class='{ "alert-danger": switches.error == true, "alert-success": switches.success == true, "alert-info": switches.empty == true }', ng-show='switches.error || switches.success || switches.empty')
       //-   | {{ msg }}
-      div
-        h2 {{ originMsg }}
-        #addDiv.form-group.col-md-8
-          label(for='task') New task
-          input#taskInput.form-control(ng-model='title', type='text', name='task')
-        #addBtnDiv.col-md-4
-          button#addBtn.btn.btn-success.btn-lg.btn-block(ng-click='add()') Add
-        div(ng-repeat='task in tasks')
-          .well.col-md-8.task-text(ng-show='!task.edit')
+      div(class='task-add-container')
+        div(class='new-task-title') Add new task
+        
+        div(class='input-and-btn')
+          input(class='new-task-input' ng-model='title', type='text', name='task')
+          button#addBtn.btn.btn-success.btn-lg.btn-block(class='new-task-btn' ng-click='add()') Add
+
+      div(class='tasks-wrapper')
+        div(class='tasks-head') Tasks
+        div( class='task-tasks-container' ng-repeat='task in tasks')
+          div(class='task-text' ng-show='!task.edit')
             p {{ task.name }}
-          .well.col-md-8.task-text(ng-show='task.edit')
-            input#taskInput.form-control(ng-model='task.name', type='text')
-          .col-md-4.task-btn
-            h2 {{editModel}}
-            button.btn.btn-lg.btn-danger.pull-right(ng-click='delete()') Delete
-            button.btn.btn-lg.btn-primary.pull-right(ng-click='edit()') Edit
-            button.btn.btn-lg.btn-success.pull-right(ng-click='done()') Done
-        .col-md-12.doneTasks
-          h2
-            strong Done tasks list
-          .col-md-12.well.task-text(ng-repeat='task in doneTasks')
-            | {{ task }}
+          
+          div(class='task-text' ng-show='task.edit')
+            input(id='editInput' ng-model='task.name', type='text')
+          
+          div(class='task-btn')
+            button(class='btn btn-danger' ng-click='delete()') Delete
+            button(class='btn btn-info' ng-click='edit()') Edit
+            button(class='btn btn-success' ng-click='done()') Done
+      
+      div(class='done-tasks-container')
+        div(class='done-task-head') Done tasks list
+        div(class='done-task' ng-repeat='task in doneTasks')
+          | {{ task }}

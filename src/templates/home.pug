@@ -1,5 +1,11 @@
 extends layout.pug
 
 block content
-	.container(ng-controller='homeCtrl')
+	.container()
+	.flex-home-container(ng-controller='homeCtrl' class='home')
 		h1 #{msg}
+
+		.mainHome
+			.mainHomeItem
+			.mainHomeItem
+		.sideSlide
