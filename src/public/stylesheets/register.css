@@ -1,0 +1,42 @@
+form {
+  margin: 0px;
+  padding: 0px;
+  background-color: steelblue;
+  border-radius: 20px;
+  border: 10px solid steelblue;
+  box-shadow: 0px 0px 20px steelblue; }
+
+.form-group {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: lightsteelblue;
+  color: black;
+  box-shadow: 0px 0px 1px black; }
+
+.myLabel {
+  font-size: 25px;
+  font-weight: normal;
+  margin: 0px;
+  padding: 0px; }
+
+.myInput {
+  border: 1px solid black;
+  height: 40px;
+  border-radius: 5px;
+  color: black;
+  font-size: 25px; }
+
+.submitBtn {
+  background-color: darkorange;
+  border: 1px solid black;
+  color: black;
+  font-size: 25px; }
+
+/*#regUsername:focus {
+	height: 50px;
+	box-shadow: 0px 0px 20px white;
+
+}
+*/
+
+/*# sourceMappingURL=register.css.map */

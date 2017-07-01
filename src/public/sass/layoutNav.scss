@@ -1,0 +1,167 @@
+@import 'colors';
+
+:root {
+	--bck: #101F3C;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background-image: url('/img/emailBirds.jpg');
+	background-size: 100vw 100vh;
+	background-attachment: fixed;
+	height: 100%;
+	color: $fresh-blue;
+	font-size: 25px;
+	letter-spacing: 2px;	
+    font-family: 'Audiowide', cursive;
+}
+
+#headlineWrapper {
+	width: 100%;
+	height: 70px;
+	padding: 0px;
+	background-color: $onyx;
+	box-shadow: 0px 10px 40px var(--headBck);
+	position: fixed;
+	z-index: 1;
+}
+
+.contentWrapper {
+	position: relative;
+	top: 140px;
+}
+
+
+.jumboTitle {
+	display: none;
+	position: relative;
+	padding-top: 10px;
+	background-color: $onyx;
+	/*background-color: #143062;*/
+	font-size: 40px;
+	height: 70px;
+}
+
+
+.jumboMenu {
+	/*background-color: #143062;*/
+	display: none;
+	position: relative;
+	padding: 0px;
+	background-color: $onyx;
+	height: 70px;
+}
+
+.jumboTitleShow {
+	display: block;
+	animation: jumboTitleShow 2s forwards;
+}
+
+.jumboMenuShow {
+	display: block;
+	animation: jumboShow 2s forwards;
+}
+
+.jumboDivWrapper{
+	display: inline-block;
+	margin: 0px 0px;
+	padding: 0px;
+	width: 200px;
+}
+
+.jumboDiv {
+	position: relative;
+	display: inline-block;
+	margin: 20px 0px;
+	border-radius: 15px;
+	width: 150px;
+	height: 50px;
+	font-size: 30px;
+	background-color: $onyx;	
+}
+
+.jumboDiv a {
+	position: relative;
+	color: $fresh-blue;
+	text-decoration: none;
+}
+
+.jumboDiv a:hover {
+	animation: jumboA 0.5s forwards;
+}
+
+#contentWrapper {
+	position: absolute;
+	margin: 50px 0px 0px 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+
+/*Animation dynamic classes*/
+
+
+.divClass {
+	
+}
+
+.divSwitch {
+	animation: targetAnim 0.5s forwards;
+}
+
+.divSwitch2 {
+	animation: otherAnim 0.5s forwards;
+}
+
+@keyframes targetAnim {
+	0% { 
+		
+	}
+	100% {
+		width: 200px;
+		font-size: 35px;
+	}
+}
+
+@keyframes otherAnim {
+	0% {}
+
+	100% { opacity: 0.5; bottom: 5px;}
+
+}
+
+@keyframes jumboA {
+	0% { }
+	100% { 
+	 	text-shadow: 0px 0px 20px $onyx; 
+		letter-spacing: 5px;
+	}
+}
+
+
+@keyframes jumboShow {
+	0%{ opacity: 0;}
+	100%{ opacity: 1;}
+}
+
+@keyframes jumboTitleShow {
+	0%{ opacity: 0; letter-spacing: 0px;}
+	100%{ opacity: 1; letter-spacing: 20px;}
+}
+
+
+@keyframes jumbotronAnim {
+	0% {}
+	100% {
+		height: 150px;
+	}
+}
+
+
+
+
+

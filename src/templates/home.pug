@@ -1,11 +1,110 @@
 extends layout.pug
 
 block content
-	.container()
 	.flex-home-container(ng-controller='homeCtrl' class='home')
 		h1 #{msg}
+			
+		div(class='info-main')
+			ul(class='my-tabs')
+				li(ng-click='switchChange("profile")')
+					a(href="#") Profile
+				li(ng-click='switchChange("skills")')
+					a(href="#") Programming
+				li(ng-click='switchChange("tech")')
+					a(href="#") Technologies
+				li(ng-click='switchChange("education")')
+					a(href="#") Education
+			div(class='photo-content-space')
+				div(class='photo-space')
+					img(src='/CV/profile-photo.jpg')
 
-		.mainHome
-			.mainHomeItem
-			.mainHomeItem
-		.sideSlide
+
+				div(class='content-space')
+					div(ng-show='switches.profile == true')
+						p(class='content-title') Profile: 
+						p alskdf
+					div(ng-show='switches.skills == true')
+						p(class='content-title') Programming skills:
+						p Programming languages: C++, Python, PHP
+						p Scripting languages: Javascript, Bash, css, html
+					div(ng-show='switches.tech == true')
+						p(class='content-title') Technologies:
+						p webpack, sass, jqeury, nodejs, mongodb, angularjs, jade/pug
+					div(ng-show='switches.education == true')
+						p(class='content-title') Education:
+
+
+
+		//- div(class='test-wrapper')
+		//- 	div(class='test-item') Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+		//- 	div(class='test-item') Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+
+		//- 	div(class='test-item') Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+
+
+		//- 	div(class='test-item') Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+
+
+		//- 	div(class='test-item') Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+
+		//- 	div(class='test-item') Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+
+		//- 	div(class='test-item') Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+		//- 	div(class='test-item') Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+
+		//- 	div(class='test-item') Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+
+
+
+		//- FLEX-BOXES
+		//- div(class='home-column-flex')
+		//- 	div(class='row-top')
+		//- 		div(class='row-top-item') 
+		//- 			span R1 I1
+		//- 		div(class='row-top-item') 
+		//- 			span R1 I2
+		//- 		div(class='row-top-item') 
+		//- 			span R1 I3
+		//- 		div(class='row-top-item') 
+		//- 			span R1 I4
+
+		//- 	div(class='row-center')
+		//- 		div(class='row-center-item')
+		//- 			span R2 I1
+		//- 		div(class='row-center-item') 
+		//- 			span R2 I2
+
+		//- 	div(class='row-bottom')
+		//- 		div(class='row-bottom-item') 
+		//- 			span R3 I1
+		//- 		div(class='row-bottom-item') 
+		//- 			span R3 I2
+		//- 		div(class='row-bottom-item') 
+		//- 			span R3 I3
+		//- 		div(class='row-bottom-item') 
+		//- 			span R3 I4
+
+
+
+		//- BALLS ANIM
+		//- .mainHome
+		//- 	div(class='top-row')
+		//- 		div(class='mainHomeItem top-item-one')
+			
+		//- 	div(class='middle-row')
+		//- 		div(class='mainHomeItem middle-item-one')
+		//- 		div(class='main-circle middle-item-circle')
+		//- 		div(class='mainHomeItem middle-item-two')
+			
+		//- 	div(class='bottom-row')
+		//- 		div(class='mainHomeItem bottom-item-one')
+
+		//- .sideSlide

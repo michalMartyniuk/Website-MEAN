@@ -1,0 +1,6 @@
+require('./src/public/sass/home.sass')
+require('./src/public/sass/profile.scss')
+require('./src/public/sass/gallery.scss')
+require('./src/public/sass/register.scss')
+require('./src/public/sass/todo.scss')
+require('./src/public/sass/layoutNav.scss')

@@ -1,0 +1,123 @@
+.flex-home-container
+	// position: absolute
+	width: 100%
+	height: 100%
+
+.info-main
+	display: flex
+	flex-direction: column
+	background-color: steelblue
+	width: 80%
+	height: 70%
+	margin: 0% 10%
+	padding: 20px
+	top: -50px
+	position: relative
+	// box-shadow: 0px 0px 50px lightsteelblue
+	border-radius: 40px
+	animation: info-main-anim 5s linear 0s infinite
+
+.my-tabs
+	display: flex
+	height: 15%
+	justify-content: center
+	font-size: 20px
+	margin: 0px
+	padding: 0px
+	list-style: none
+	border-radius: 30px
+	border-bottom-left-radius: 0px
+	border-bottom-right-radius: 0px
+	background-color: #ffa900
+
+	li
+		display: flex
+		height: 100%
+
+	li:first-child
+		border-top-left-radius: 30px
+
+	li:last-child
+		border-top-right-radius: 30px
+
+
+	li:hover
+		background-color: pink
+		
+	li a
+		color: black
+		text-decoration: none
+		margin: auto
+	
+
+	li:nth-child(1)
+		flex: 1
+	li:nth-child(2)
+		flex: 1
+	li:nth-child(3)
+		flex: 1
+	li:nth-child(4)
+		flex: 1
+
+
+.photo-content-space
+	display: flex
+	height: 100%
+	background-color: lightsteelblue
+	border-radius: 30px
+	border-top-right-radius: 0px
+	border-top-left-radius: 0px
+
+
+.photo-space
+	height: 100%
+	width: 25%
+	// box-shadow: 0px 0px 20px lightsteelblue
+
+	img
+		position: relative
+		height: 100%
+		width: 100%
+		border-radius: 30px
+		border-top-left-radius: 0px
+		border-top-right-radius: 0px
+		border-bottom-right-radius: 0px
+		animation: photo-anim 5s linear 0s infinite
+
+.profile-photo
+	width: 100%
+	height: 100%
+
+.content-space
+	width: 75%
+	height: 100%
+	background: #407090
+	border-bottom-right-radius: 30px
+
+	p:after
+		content: "alskdfjsdlkfjasdlkfjasdlkfjsdalfksaj"
+
+// @keyframes info-main-anim
+// 	0%
+// 		box-shadow: 0px 0px 0px lightsteelblue
+// 	50%
+// 		box-shadow: 0px 0px 100px lightsteelblue
+// 	100%
+// 		box-shadow: 0px 0px 0px lightsteelblue
+	
+
+// @keyframes photo-anim
+// 	0%	
+// 		bottom: 0px
+// 		left: 0px
+// 		border-radius: 0px
+
+// 	50%
+// 		bottom: 200px
+// 		left: 770px
+// 		border-radius: 200px
+
+// 	100%
+// 		top: 200px
+// 		left: 0px
+// 		border-radius: 0px
