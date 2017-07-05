@@ -13,124 +13,166 @@ body {
 	background-size: 100vw 100vh;
 	background-attachment: fixed;
 	height: 100%;
-	color: $fresh-blue;
+	color: $onyx;
 	font-size: 25px;
 	letter-spacing: 2px;	
     font-family: 'Audiowide', cursive;
 }
 
-#headlineWrapper {
-	width: 100%;
-	height: 70px;
-	padding: 0px;
-	background-color: $onyx;
-	box-shadow: 0px 10px 40px var(--headBck);
+.decoDiv {
+	display: flex;
 	position: fixed;
+	width: 80%;
+	height: 60px;
+	margin: 0px 10%;
+	background-color: $tangerine;
+	border-bottom-left-radius: 200px;
+	border-bottom-right-radius: 200px;
 	z-index: 1;
+}	
+
+.headlineWrapper {
+	display: flex;
+	width: 95%;
+	height: 60px;
+	margin: auto;
+	padding: 0px;
+	// box-shadow: 0px 10px 40px $onyx;
+	background-color: $onyx;
+	border-bottom-left-radius: 200px;
+	border-bottom-right-radius: 200px;
 }
+
+.jumboMenu {
+	display: none;
+	position: relative;
+	width: 95%;
+	height: 80%;
+	justify-content: center;
+	margin: 0px auto;
+	padding: 0px;
+	background-color: $my-menu-blue;
+	border-bottom-left-radius: 200px;
+	border-bottom-right-radius: 200px;
+}
+
+.jumboTitle {
+	display: none;
+	width: 95%;
+	height: 80%;
+	justify-content: center;
+	margin: 0 auto;
+	padding: 0px;
+	background-color: $blueberry;
+	color: orange;
+	font-size: 35px;
+	border-bottom-left-radius: 200px;
+	border-bottom-right-radius: 200px;
+}
+
+.jumboDivWrapper{
+	display: flex;
+	margin: 0px 2%;
+	padding: 0px 2%;
+	// border: 5px solid orange;
+	border-radius: 20px;
+}
+
+.jumboDiv {
+	display: flex;
+	margin: auto;
+	border-radius: 10px;	
+	font-size: 25px;
+}
+
+.jumboDiv a {
+	margin: auto;
+	color: $blueberry;
+	text-decoration: none;
+}
+
+
+
+.jumboTitleShow {
+	display: flex;
+	animation: jumboTitleShow 2s forwards;
+}
+
+.jumboMenuShow {
+	display: flex;
+	animation: jumboShow 1s forwards;
+}
+
+
+// .jumboDiv a:hover {
+// 	animation: jumboA 0.5s forwards;
+// }
+
 
 .contentWrapper {
 	position: relative;
 	top: 140px;
 }
 
-
-.jumboTitle {
+.errorMsg {
 	display: none;
-	position: relative;
-	padding-top: 10px;
-	background-color: $onyx;
-	/*background-color: #143062;*/
-	font-size: 40px;
-	height: 70px;
-}
-
-
-.jumboMenu {
-	/*background-color: #143062;*/
-	display: none;
-	position: relative;
+	width: 90%;
+	height: 70%;
+	justify-content: center;
+	margin: auto;
 	padding: 0px;
-	background-color: $onyx;
-	height: 70px;
-}
-
-.jumboTitleShow {
-	display: block;
-	animation: jumboTitleShow 2s forwards;
-}
-
-.jumboMenuShow {
-	display: block;
-	animation: jumboShow 2s forwards;
-}
-
-.jumboDivWrapper{
-	display: inline-block;
-	margin: 0px 0px;
-	padding: 0px;
-	width: 200px;
-}
-
-.jumboDiv {
-	position: relative;
-	display: inline-block;
-	margin: 20px 0px;
-	border-radius: 15px;
-	width: 150px;
-	height: 50px;
+	background-color: $blueberry;
+	color: orange;
+	border-bottom-left-radius: 200px;
+	border-bottom-right-radius: 200px;
 	font-size: 30px;
-	background-color: $onyx;	
 }
 
-.jumboDiv a {
-	position: relative;
-	color: $fresh-blue;
-	text-decoration: none;
+.errorMsgShow {
+	display: flex;
 }
 
-.jumboDiv a:hover {
-	animation: jumboA 0.5s forwards;
+.errorWrapper {
+	display: flex;
+	width: 80%;
+	height: 150px;
+	margin: 0px 10%;
+	justify-content: center;
+	background-color: lightsteelblue;
+	box-shadow: 0px 0px 20px lightsteelblue;
+	border-radius: 20px;
 }
 
-#contentWrapper {
-	position: absolute;
-	margin: 50px 0px 0px 0px;
-	padding: 0px;
-	width: 100%;
-	height: 100%;
-}
-
-
-/*Animation dynamic classes*/
-
-
-.divClass {
+.errorDiv {
+	margin: auto;
+	color: $blueberry;
 	
 }
 
+/*Animation dynamic classes*/
+
+.divClass {}
 .divSwitch {
-	animation: targetAnim 0.5s forwards;
+	animation: targetAnim 0.2s forwards;
 }
 
-.divSwitch2 {
-	animation: otherAnim 0.5s forwards;
-}
+// .divSwitch2 {
+// 	animation: otherAnim 0.2s forwards;
+// }
 
 @keyframes targetAnim {
 	0% { 
 		
 	}
 	100% {
-		width: 200px;
-		font-size: 35px;
+		background-color: $tangerine;
 	}
 }
 
 @keyframes otherAnim {
 	0% {}
 
-	100% { opacity: 0.5; bottom: 5px;}
+	100% { opacity: 0.5}
 
 }
 
@@ -144,8 +186,8 @@ body {
 
 
 @keyframes jumboShow {
-	0%{ opacity: 0;}
-	100%{ opacity: 1;}
+	0%{ top: -50px;}
+	100%{ opacity: 1; top: 0px;}
 }
 
 @keyframes jumboTitleShow {
@@ -160,8 +202,3 @@ body {
 		height: 150px;
 	}
 }
-
-
-
-
-

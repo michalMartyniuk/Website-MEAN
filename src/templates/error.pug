@@ -1,5 +1,5 @@
 extends layout.pug
 
 block content
-	.container-fluid(ng-controller='errorCtrl')
-		div(class='well container col-md-8 col-md-offset-2 errorDiv') #{error}
+	div(class='errorWrapper' ng-controller='errorCtrl')
+		div(class='errorDiv') #{error}

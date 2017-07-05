@@ -4,6 +4,34 @@
 	width: 100%
 	height: 100%
 
+.myTooltip
+	position: absolute
+	font-size: 15px
+	width: 50px
+	height: 50px
+	top: -210px
+	left: 200px
+
+.tooltip
+	font-size: 20px
+
+
+.tooltip-inner
+	position: relative
+	top: 20px
+	left: -100px
+	background-color: black
+	color: orange
+	border-radius: 20px
+	font-family: 'Audiowide'
+
+
+.tooltip.bottom .tooltip-arrow
+	border-width: 0px 15px 100px
+	transform: rotate(80deg)
+	border-bottom-color: black
+
+
 .info-main
 	display: flex
 	flex-direction: column
@@ -28,11 +56,15 @@
 	border-radius: 30px
 	border-bottom-left-radius: 0px
 	border-bottom-right-radius: 0px
-	background-color: $deep-aqua
+	background-color: $my-menu-blue
 
 	li
 		height: 100%
 		display: flex
+		outline: none
+
+	li:hover
+		background-color: $tangerine
 
 	li:first-child
 		border-top-left-radius: 30px
@@ -41,12 +73,11 @@
 		border-top-right-radius: 30px
 
 	li a
-		color: $blue-grey
 		text-decoration: none
 		margin: auto
-	
-	li:hover
-		background-color: #505160
+		color: $blueberry
+		outline: none
+
 		
 	li:nth-child(1)
 		flex: 1
@@ -87,20 +118,35 @@
 	height: 100%
 
 .content-space
+	font-family: "Fresca"
 	display: flex
 	width: 75%
 	height: 100%
 	background-color: lightsteelblue
 	border-bottom-right-radius: 30px
 	padding: 20px
-	color: $blueberry
 
 	p
-		font-size: 20px
+		font-size: 27px
 
 	.content-title
 		color: $tangerine
 		font-size: 25px
+
+
+.switchClass
+	background-color: $tangerine
+
+
+
+
+
+
+
+
+
+
+
 
 // @keyframes info-main-anim
 // 	0%

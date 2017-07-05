@@ -25,7 +25,7 @@ app.use(function (req, res, next) {
 	if(req.session.user) {
 		res.locals.user = req.session.user
 		res.locals.userLogged = true
-		res.locals.background = req.session.user.background
+		res.locals.background = req.session.user.background.slice(4,-4)
 		res.locals.headlineB = req.session.user.headlineB
 	}
 	else {

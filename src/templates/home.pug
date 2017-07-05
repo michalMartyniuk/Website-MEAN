@@ -2,18 +2,17 @@ extends layout.pug
 
 block content
 	.flex-home-container(ng-controller='homeCtrl' class='home')
-		h1 #{msg}
-			
+		div(class='myTooltip' data-toggle='tooltip' title='Mouseover to see menu')
 		div(class='info-main')
 			ul(class='my-tabs')
-				li(ng-click='switchChange("profile")')
-					a(href="#") Profile
-				li(ng-click='switchChange("skills")')
-					a(href="#") Programming
-				li(ng-click='switchChange("tech")')
-					a(href="#") Technologies
-				li(ng-click='switchChange("education")')
-					a(href="#") Education
+				li(ng-click='switchChange("profile")' ng-class='{ switchClass: switches.profile == true }')
+					a(href="#") Profil
+				li(ng-click='switchChange("skills")' ng-class='{ switchClass: switches.skills == true }')
+					a(href="#") Umiejętności
+				li(ng-click='switchChange("education")' ng-class='{ switchClass: switches.education == true }')
+					a(href="#") Wykształcenie
+				li(ng-click='switchChange("tech")' ng-class='{ switchClass: switches.tech == true }')
+					a(href="#") Website info
 			div(class='photo-content-space')
 				div(class='photo-space')
 					img(src='/CV/profile-photo.jpg')
@@ -21,17 +20,29 @@ block content
 
 				div(class='content-space')
 					div(ng-show='switches.profile == true')
-						p(class='content-title') Profile: 
-						p alskdf
+						//- p(class='content-title')
+						p <strong>Imię:</strong> Michał Martyniuk
+						p <strong>E-mail:</strong> fenixmichal77@gmail.com
+						p <strong>Data urodzenia:</strong> 08.09.1990
+						p <strong>Zainteresowania:</strong> programowanie, nowe technologie, gry komputerowe, żonglowanie
+						p <strong>Profil gitHub:</strong> 
 					div(ng-show='switches.skills == true')
-						p(class='content-title') Programming skills:
-						p Programming languages: C++, Python, PHP
-						p Scripting languages: Javascript, Bash, css, html
+						p(class='content-title')
+						p <strong>Podstawowa znajomość:</strong> C++, Python, PHP, Ruby, Linux, Bash
+						p <strong>Dobra znajomość:</strong> HTML, CSS, Javascript
+						p <strong>Znane technologie:</strong> MongoDB, Express.js, AngularJS, Node.js, jQuery, Sass, Pug/Jade, Bootstrap, Webpack, Git
 					div(ng-show='switches.tech == true')
-						p(class='content-title') Technologies:
-						p webpack, sass, jqeury, nodejs, mongodb, angularjs, jade/pug
+						p(class='content-title')
+							p Strona została stworzona z wykorzystaniem MEAN stack (MongoDB, Express.js, AngularJS, Node.js) oraz: jQuery, Sass, Pug, Bootstrap, Webpack. Celem jej stworzenia była nauka i nabycie doświadczenia w tworzeniu dynamicznej strony internetowej z użyciem powyższych technologii.
 					div(ng-show='switches.education == true')
-						p(class='content-title') Education:
+						p(class='content-title')
+						p <strong>2009 - 2015</strong>: Wyższa Szkoła Języków Obcych im. Samuela Bogumiła Lindego z siedzibą w Poznaniu <br>
+							|<strong>Kierunek</strong>: japonistyka <br>
+							|<strong>Poziom wykształcenia</strong>: licencjat <br>
+						p <strong>2015</strong>: Collegium Da Vinci z siedzibą w Poznaniu <br>
+							|<strong>Kierunek</strong>: informatyka <br>
+							|<strong>Poziom wykształcenia</strong>: w trakcie studiów <br>
+
 
 
 

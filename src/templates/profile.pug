@@ -3,13 +3,6 @@ extends layout.pug
 block content
 	//- FLEX TEST
 
-	
-			
-
-
-
-
-
 	if userLogged
 		div(class='mainFlex' ng-controller='profileCtrl')
 			div(class='flex-item-container')
@@ -22,8 +15,8 @@ block content
 				div(class='flex-item-one') Email: 
 				div(class='flex-item-two') #{user.email}
 			div(class='flex-item-container')
-				div(class='flex-item-one') Another info: 
-				div(class='flex-item-two') another info
+				div(class='flex-item-one') Background: 
+				div(class='flex-item-two') #{background}
 			
 	//- 		//- div(class='resetBckRow')
 	//- 		//- 	button(class='btn btn-primary btn-lg submitBtn' type='button' ng-click='resetBck()') Reset Background
