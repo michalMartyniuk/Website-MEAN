@@ -3,7 +3,6 @@ const router = express.Router()
 const User = require('../models/user')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
-var bcrypt = require('bcrypt')
 
 
 router.get('/', function (req, res, next) {
@@ -69,19 +68,22 @@ router.post('/login', function (req, res, next) {
 			return next(err)
 		}
 
-		user.comparePassword(password, user.password, function (err, isMatch) {
-			if (err) {
-				return next(err)
-			}
+		req.session.user = user
+		res.redirect('profile')
 
-			if(!isMatch){
-				var err = new Error('Invalid password')
-				return next(err)
-			}
+		// user.comparePassword(password, user.password, function (err, isMatch) {
+		// 	if (err) {
+		// 		return next(err)
+		// 	}
 
-			req.session.user = user
-			res.redirect('profile')
-		})
+		// 	if(!isMatch){
+		// 		var err = new Error('Invalid password')
+		// 		return next(err)
+		// 	}
+
+		// 	req.session.user = user
+		// 	res.redirect('profile')
+		// })
 	})
 })
 
