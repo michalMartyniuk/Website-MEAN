@@ -7,14 +7,13 @@ block content
 		div(id="myModal" class="modal")
 			div(class='row buttonCloseRow')
 				button(class='btn col-xs-10' ng-click='setBackground()') Set as background image
-				//- button(class='btn col-xs-5' ng-click='setHeadline()') Set as site headline image
 				span(class="close col-xs-2" 
 					onclick="document.getElementById('myModal').style.display='none'"
 				) &times;
 
 			img(class="modal-content" id="modalImg")
 			div(id="caption" class='col-xs-6') 
-				h1 Crysis
+				h1 {{ imageName }}
 
 		div(class='imgDiv' ng-repeat='img in imgs')
 			img(

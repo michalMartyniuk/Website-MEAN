@@ -2,31 +2,46 @@ extends layout.pug
 
 block content
     div(class='task-main-container' ng-controller='todoCtrl')
-      //- #errorMsg.alert(ng-class='{ "alert-danger": switches.error == true, "alert-success": switches.success == true, "alert-info": switches.empty == true }', ng-show='switches.error || switches.success || switches.empty')
-      //-   | {{ msg }}
-
       div(class='task-add-container')
-        div(class='new-task-title') Add new task
-        
-        div(class='input-and-btn')
-          input(class='new-task-input' ng-model='title', type='text', name='task')
-          button#addBtn.btn.btn-success.btn-lg.btn-block(class='new-task-btn' ng-click='add()') Add
-
-      div(class='tasks-wrapper')
-        div(class='tasks-head') Tasks
-        div( class='task-tasks-container' ng-repeat='task in tasks')
-          div(class='task-text' ng-show='!task.edit')
-            p {{ task.name }}
-          
-          div(class='task-text' ng-show='task.edit')
-            input(id='editInput' ng-model='task.name', type='text')
-          
-          div(class='task-btn')
-            button(class='btn btn-danger' ng-click='delete()') Delete
-            button(class='btn btn-info' ng-click='edit()') Edit
-            button(class='btn btn-success' ng-click='done()') Done
+        input(class='new-task-input' ng-model='title', type='text', name='task')
+        button(class='new-task-btn' ng-click='add()') Add
       
-      div(class='done-tasks-container')
-        div(class='done-task-head') Done tasks list
-        div(class='done-task' ng-repeat='task in doneTasks')
-          | {{ task }}
+      div(class='tasks-heads-wrapper')
+        div(class='tasks-head' ng-click='doneList = false; taskList = true; clearBtnSwitch = false' ng-class='{ switchClass: taskList == true }')
+          p Tasks
+        
+
+        div(class='done-task-head' ng-click='taskList = false; doneList = true; clearBtn();' ng-class='{ switchClass: doneList == true }')
+          p Done tasks list
+
+      div(class='task-area-wrapper')
+        div(class='content-container')
+          div(class='tasks-container' ng-show='taskList == true' ng-repeat='task in tasks')
+            div(class='task-text' ng-show='!task.edit')
+              p {{ task.name }}
+            
+            div(class='task-text' ng-show='task.edit')
+              input(class='editInput' ng-model='task.name', type='text')
+            
+            div(class='task-btn')
+              button(class='delete-btn' ng-hide='task.edit' ng-click='delete()') Delete
+              button(
+                class='edit-btn'
+                ng-click='edit()'
+                ng-class='{ editMode: task.edit == true }'
+
+
+                ) {{ editText }}
+              button(class='done-btn' ng-hide='task.edit' ng-click='done()') Done
+          
+          div(class='done-tasks-container')
+            div(class='done-tasks-list' ng-show='doneList == true' ng-repeat='task in doneTasks')
+              p {{ task }}
+            
+            button(class='clear-done-tasks' type='button'
+              ng-click='clearTasks()'
+              ng-show='clearBtnSwitch == true'
+            ) Clear done tasks
+
+
+

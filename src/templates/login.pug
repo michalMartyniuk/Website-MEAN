@@ -1,6 +1,8 @@
 extends layout.pug
 
 block content
+	.container
+		h3 #{errors}
 	.container(ng-controller='loginCtrl')
 		form(method='post' action='/login' class='col-xs-8 col-xs-offset-2')
 			.form-group.row
@@ -8,6 +10,6 @@ block content
 				input(type='text' class='myInput col-xs-9 col-xs-offset-1' name='username')
 			.form-group.row
 				label(for='password' class='myLabel col-xs-2') Password:
-				input(type='text' class='myInput col-xs-9 col-xs-offset-1' name='password')
+				input(type='password' class='myInput col-xs-9 col-xs-offset-1' name='password')
 			.row
 				button(type='submit' class='btn btn-block btn-lg submitBtn') Login

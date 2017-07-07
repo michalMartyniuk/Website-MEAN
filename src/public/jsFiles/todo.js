@@ -2,6 +2,7 @@ var app = angular.module('app')
 
 app.controller('todoCtrl', function ($scope, $http) {
 	
+	$scope.testArray = ['blazej', 'pawel', 'ela', 'kacper', 'slkdfjsd', 'ldksgfdlkg', 'dflkjgdfs', 'aslkfjgsfl', 'alfkgjdfl', 'slkgjsfdlg']
 	$scope.$parent.mainMsg = "To-do"
 	$scope.tasks = []
 	$scope.doneTasks = []
@@ -9,6 +10,9 @@ app.controller('todoCtrl', function ($scope, $http) {
 	$scope.switches = switches
 	$scope.taskName = ""
 	$scope.editVal = ""
+	$scope.editText = "Edit"
+	$scope.taskList = true
+	$scope.clearBtnSwitch = false
 
 	$scope.getTasks = function() {
 		$http.get('/data').then(function (response) {
@@ -21,28 +25,33 @@ app.controller('todoCtrl', function ($scope, $http) {
 
 	$scope.getTasks()
 
-	// $scope.timeMsg = function(msg) {
-		
-	// 	$scope.$parent.errorMsg = msg
+	$scope.clearBtn = function(){
+		if($scope.doneTasks.length > 0){
+			$scope.clearBtnSwitch = true
+		}
+	}
 
-	// 	function parentMsg() {
-	// 		$scope.$parent.errorMsg = originMsg
-	// 	}
-
-	// 	setTimeout(parentMsg, 3000)
-	// }
-
-
+	$scope.clearTasks = function() {
+		$http.post('/clearTasks').then( function (response){
+			$scope.clearBtnSwitch = false;
+			$scope.getTasks()
+			$scope.$parent.errorMsg = "Task list successfully cleared"
+		})
+	}
 
 	$scope.done = function() {
 		if($scope.doneTasks.includes(this.task.name)) {
-			$scope.switchChange('error')
+			$scope.$parent.errorMsg = "This task is already done"
 		}
-		else {
-			$http.post('/doneTodo' + this.task.name)	
-			this.delete()
+		else{
+			$http.post('/doneTodo' + this.task.name).then( function (response) {
+				$scope.taskList = false
+				$scope.doneList = true
+				$scope.clearBtnSwitch = true;				
+			})
+			
+			this.delete("Your task has been moved to your done tasks")
 			$scope.getTasks()
-			$scope.switchChange('success')
 		}
 	}
 
@@ -64,11 +73,14 @@ app.controller('todoCtrl', function ($scope, $http) {
 				$scope.$parent.errorMsg = "This task already exists"
 				break
 			}
+
 		}
 		if(valid == true) {
 			$http.post('/addTodo' + $scope.title).then(function (response) {
 				$scope.getTasks()
-				$scope.switchChange('success')
+				$scope.doneList = false;
+				$scope.taskList = true;
+				$scope.title = ""
 		
 			}, function (response) {
 				$scope.switchChange('error')
@@ -78,13 +90,18 @@ app.controller('todoCtrl', function ($scope, $http) {
 		}			
 	}
 
-	$scope.delete = function () {
+	$scope.delete = function (msg) {
 		$http.delete('/delTodo' + this.task.name).then( function (response) {
 			$scope.getTasks()
 		})
 		$scope.switchChange('success')
 		$scope.$parent.errMsg = true
-		$scope.$parent.errorMsg = "Your task has been deleted"
+		if(msg == undefined){
+			$scope.$parent.errorMsg = "Your task has been deleted"
+		}
+		else {
+			$scope.$parent.errorMsg = msg
+		}
 	}
 
 	$scope.switchChange = function(state) {
@@ -104,6 +121,7 @@ app.controller('todoCtrl', function ($scope, $http) {
 	
 	$scope.edit = function() {
 		if (this.task.edit == true) {
+			$scope.editText = "Edit"
 			$http.post('/editTodo' + task + '/' + this.task.name)
 			$scope.getTasks()
 			$scope.switchChange('success')
@@ -112,6 +130,7 @@ app.controller('todoCtrl', function ($scope, $http) {
 		}
 
 		else if (this.task.edit == false) {
+			$scope.editText = 'Accept'
 			this.task.edit = true
 			task = this.task.name
 		}

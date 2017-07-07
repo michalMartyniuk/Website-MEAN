@@ -1,0 +1,10 @@
+extends layout.pug
+
+block content
+	div(class='test-main-container' ng-controller='todoCtrl')
+		h2 {{ doneTasks }}
+		h2 {{ testArray }}
+		div(ng-repeat='done in doneTasks')
+			h2 {{ done }}
+		div(ng-repeat='task in tasks')
+			h2 {{ task.name }}

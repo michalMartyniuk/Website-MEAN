@@ -26,22 +26,20 @@ form {
 }
 
 .myInput {
-	border: 1px solid black;
-	height: 40px;
-	border-radius: 5px;
 	font-size: 25px;
+	height: 40px;
+	padding: 5px 10px;
+	border: 1px solid black;
+	border-radius: 5px;
 }
 
 .submitBtn {
-	background-color: darkorange;
+	background-color: $tangerine;
 	border: 1px solid black;
 	color: $blueberry;
 	font-size: 25px;
 }
 
-/*#regUsername:focus {
-	height: 50px;
-	box-shadow: 0px 0px 20px white;
-
+.submitBtn:hover {
+	background-color: $hover-tangerine;
 }
-*/

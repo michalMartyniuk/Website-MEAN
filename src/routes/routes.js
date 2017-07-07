@@ -3,6 +3,8 @@ const router = express.Router()
 const User = require('../models/user')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
+var bcrypt = require('bcrypt')
+
 
 router.get('/', function (req, res, next) {
 	res.render('home', { title: 'Home' })
@@ -16,6 +18,11 @@ router.get('/home', function (req, res, next) {
 
 router.get('/todo', function (req, res, next) {
 	res.render('todo', { title: 'To-do list' })
+	next()
+})
+
+router.get('/test', function (req, res, next) {
+	res.render('test', { title: 'Test' })
 	next()
 })
 
@@ -53,17 +60,28 @@ router.post('/login', function (req, res, next) {
 	var username = req.body.username
 	var password = req.body.password
 
-	User.findOne({ username: username, password: password }, function (err, user) {
+	User.findOne({ username: username }, function (err, user) {
 		if(err) {
 			return next(err)
 		}
 		if(!user) {
-			var err = new Error('User not found')
+			var err = new Error('Invalid username')
 			return next(err)
 		}
 
-		req.session.user = user
-		res.redirect('profile')
+		user.comparePassword(password, user.password, function (err, isMatch) {
+			if (err) {
+				return next(err)
+			}
+
+			if(!isMatch){
+				var err = new Error('Invalid password')
+				return next(err)
+			}
+
+			req.session.user = user
+			res.redirect('profile')
+		})
 	})
 })
 
@@ -86,16 +104,41 @@ router.post('/register', function (req, res, next) {
 		password: req.body.password
 	})
 
-
 	newUser.save(function (err, user) {
 		if(err) {
 			return next(err)
 		}
-
 		req.session.user = user
 		res.redirect('profile')
-	})	
+	})
 })
+
+	// // save user to database
+	// newUser.save(function (err) {
+	//     if (err) throw err;
+
+	//     // fetch user and test password verification
+	//     User.findOne({ username: username }, function (err, user) {
+	//         if (err) throw err;
+
+	//         // test a matching password
+	//         user.comparePassword( user.password, function(err, isMatch) {
+	//             if (err) {
+	//             	throw err;
+	//             }
+	//             else {
+	//             	console.log('Password123:', isMatch); // -> Password123: true
+	//             }
+	//         });
+
+	//         // test a failing password
+	//         user.comparePassword('123Password', function(err, isMatch) {
+	//             if (err) throw err;
+	//             console.log('123Password:', isMatch); // -> 123Password: false
+	//         });
+	//     });
+	// });
+	// MY CODE
 
 
 router.get('/data', function (req, res, next) {
@@ -135,8 +178,6 @@ router.post('/doneTodo:task', function (req, res, next) {
 			res.json(data)
 		})
 })
-
-
 
 router.post('/addTodo:id', function (req, res, next) {
 	var user = req.session.user
@@ -208,5 +249,14 @@ router.post('/resetHeadBck', function (req, res, next) {
 	})
 })
 
+router.post('/clearTasks', function (req, res, next) {
+	User.update({ username: req.session.user.username },
+	{$set: { "tasks.done": [] }}, { multi: true }, function (err, data) {
+		if(err) {
+			return next(err)
+		}
+		res.json(data)
+	})
+})
 
 module.exports = router

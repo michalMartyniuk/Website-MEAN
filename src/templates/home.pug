@@ -1,6 +1,7 @@
 extends layout.pug
 
 block content
+	
 	.flex-home-container(ng-controller='homeCtrl' class='home')
 		div(class='myTooltip' data-toggle='tooltip' title='Mouseover to see menu')
 		div(class='info-main')
@@ -25,7 +26,7 @@ block content
 						p <strong>E-mail:</strong> fenixmichal77@gmail.com
 						p <strong>Data urodzenia:</strong> 08.09.1990
 						p <strong>Zainteresowania:</strong> programowanie, nowe technologie, gry komputerowe, żonglowanie
-						p <strong>Profil gitHub:</strong> 
+						p <strong>Profil GitHub:</strong> 
 					div(ng-show='switches.skills == true')
 						p(class='content-title')
 						p <strong>Podstawowa znajomość:</strong> C++, Python, PHP, Ruby, Linux, Bash
@@ -33,7 +34,7 @@ block content
 						p <strong>Znane technologie:</strong> MongoDB, Express.js, AngularJS, Node.js, jQuery, Sass, Pug/Jade, Bootstrap, Webpack, Git
 					div(ng-show='switches.tech == true')
 						p(class='content-title')
-							p Strona została stworzona z wykorzystaniem MEAN stack (MongoDB, Express.js, AngularJS, Node.js) oraz: jQuery, Sass, Pug, Bootstrap, Webpack. Celem jej stworzenia była nauka i nabycie doświadczenia w tworzeniu dynamicznej strony internetowej z użyciem powyższych technologii.
+							p Strona została stworzona z wykorzystaniem MEAN stack (MongoDB, Express.js, AngularJS, Node.js) oraz: jQuery, Sass, Pug, Bootstrap, Webpack.
 					div(ng-show='switches.education == true')
 						p(class='content-title')
 						p <strong>2009 - 2015</strong>: Wyższa Szkoła Języków Obcych im. Samuela Bogumiła Lindego z siedzibą w Poznaniu <br>
