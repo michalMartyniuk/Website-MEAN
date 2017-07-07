@@ -4,6 +4,10 @@ app.controller('homeCtrl', function ($scope, $http) {
 	$scope.switches = switches
 	$scope.$parent.mainMsg = 'Home'
 
+	 $(".profile-link").on("click",function(){
+         window.open($(this).attr('href'),'_blank');
+     });
+
 	$scope.switchChange = function(state) {
 		for(var key in $scope.switches) {
 			if($scope.switches.hasOwnProperty(key)){

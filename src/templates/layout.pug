@@ -6,6 +6,12 @@ html
 		link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
 		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
 		link(href="https://fonts.googleapis.com/css?family=Press+Start+2P|Audiowide|Average|Fresca|PT+Sans|Source+Sans+Pro|Ubuntu|Zilla+Slab&subset=greek" rel="stylesheet")
+		script(src='bundle.js')
+		script(src='jsFiles/layoutNav.js')
+		script(src='jsFiles/app.js') 
+		script(src='jsFiles/todo.js')
+		script(src='jsFiles/gallery.js')
+		script(src='jsFiles/otherCtrl.js')
 
 		title= title
 	body(ng-app='app' ng-controller='mainCtrl')
@@ -46,7 +52,7 @@ html
 								ng-mouseleave='switchCheck(1,"leave")'
 								ng-click='jumboDivs[1].clickSwitch = true'
 							)
-								a(href='register') Register
+								a(href='signup') Sign up
 
 						div(class='jumboDivWrapper')
 							div(
@@ -76,7 +82,7 @@ html
 								ng-mouseleave='switchCheck(5,"leave")'
 								ng-click='jumboDivs[5].clickSwitch = true'
 							)
-								a(href='todo') To-do
+								a(href='tasks') Tasks
 
 						div(class='jumboDivWrapper')
 							div(
@@ -90,12 +96,5 @@ html
 
 		.container-fluid(class='contentWrapper')
 			block content
-
 		
-		script(src='bundle.js')
-		script(src='jsFiles/layoutNav.js')
-		script(src='jsFiles/app.js') 
-		script(src='jsFiles/todo.js')
-		script(src='jsFiles/gallery.js')
-		script(src='jsFiles/otherCtrl.js')
 

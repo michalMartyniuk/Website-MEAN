@@ -3,7 +3,7 @@ var app = angular.module('app')
 app.controller('todoCtrl', function ($scope, $http) {
 	
 	$scope.testArray = ['blazej', 'pawel', 'ela', 'kacper', 'slkdfjsd', 'ldksgfdlkg', 'dflkjgdfs', 'aslkfjgsfl', 'alfkgjdfl', 'slkgjsfdlg']
-	$scope.$parent.mainMsg = "To-do"
+	$scope.$parent.mainMsg = "Task manager"
 	$scope.tasks = []
 	$scope.doneTasks = []
 	$scope.title = ""

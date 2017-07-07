@@ -15,18 +15,8 @@ router.get('/home', function (req, res, next) {
 	next()
 })
 
-router.get('/todo', function (req, res, next) {
-	res.render('todo', { title: 'To-do list' })
-	next()
-})
-
-router.get('/test', function (req, res, next) {
-	res.render('test', { title: 'Test' })
-	next()
-})
-
-router.get('/blog', function (req, res, next) {
-	res.render('blog', { title: 'Blog' })
+router.get('/tasks', function (req, res, next) {
+	res.render('todo', { title: 'Tasks' })
 	next()
 })
 
@@ -35,7 +25,6 @@ router.get('/gallery', function (req, res, next) {
 	next()
 })
 
-
 router.get('/profile', function (req, res, next) {
 	if(!req.session.user) {
 		var err = new Error("Sorry! You need to be logged in to see this page")
@@ -43,7 +32,6 @@ router.get('/profile', function (req, res, next) {
 	}
 	res.render('profile', { title: 'Profile' })
 })
-
 
 router.get('/session', function (req, res, next) {
 	res.send(req.session)
@@ -92,12 +80,12 @@ router.get('/logout', function (req, res, next) {
 	res.redirect('home')
 })
 
-router.get('/register', function (req, res, next) {
-	res.render('register', { title: 'Register' })
+router.get('/signup', function (req, res, next) {
+	res.render('register', { title: 'Sign up' })
 	next() 
 })
 
-router.post('/register', function (req, res, next) {
+router.post('/signup', function (req, res, next) {
 
 	var newUser = new User({
 		name: req.body.name,
@@ -215,18 +203,6 @@ router.post('/background:userB', function (req, res, next) {
 			if(err) {
 				return next(err)
 			}
-		})
-})
-
-router.post('/headlineB:userB', function (req, res, next) {
-	var userB = 'img/' + req.params.userB
-	var user = req.session.user
-	User.update({ username: user.username }, {$set: { headlineB: userB }},
-		function (err, data) {
-			if(err) {
-				return next(err)
-			}
-			res.json(data)
 		})
 })
 
