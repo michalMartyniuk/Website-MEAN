@@ -91,23 +91,15 @@ body {
 	text-decoration: none;
 }
 
-
-
 .jumboTitleShow {
 	display: flex;
-	animation: jumboTitleShow 2s forwards;
+	animation: jumboTitleShow 1s forwards;
 }
 
 .jumboMenuShow {
 	display: flex;
-	animation: jumboShow 1s forwards;
+	animation: jumboShow 0.5s forwards;
 }
-
-
-// .jumboDiv a:hover {
-// 	animation: jumboA 0.5s forwards;
-// }
-
 
 .contentWrapper {
 	position: relative;
